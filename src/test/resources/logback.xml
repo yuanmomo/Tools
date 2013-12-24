@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-  <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
-    <layout class="ch.qos.logback.classic.PatternLayout">
-      <pattern>%-20(%d{HH:mm:ss.SSS} [%thread]) %-5level %logger{80} - %msg%n</pattern>
-    </layout>
-  </appender>
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		 <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"> 
+			<pattern>%-20(%d{HH:mm:ss.SSS} [%thread]) %-5level %logger{80} -
+				%msg%n</pattern>
+		</encoder>
+	</appender>
 
-  <logger name="java.sql.PreparedStatement" level="ALL" />
-  <logger name="net.yuanmomo.tools" level="ALL" />
+	<logger name="java.sql.PreparedStatement" level="ALL" />
+	
+	<logger name="net.yuanmomo.tools" level="ALL" />
+	
+	<logger name="org.mybatis.generator" level="ALL" />
 
-  <root level="ALL">
-    <appender-ref ref="stdout" />
-  </root>
+	<root level="ALL">
+		<appender-ref ref="stdout" />
+	</root>
 </configuration>

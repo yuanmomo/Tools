@@ -89,8 +89,9 @@ public class Write<T> {
 			return false;
 		}
 		logger.info("The output file is "+ file.getAbsolutePath());
-		if(file.getParentFile()==null || !file.getParentFile().exists()){//父目录不存在，创建
-			file.getParentFile().mkdirs();
+		File parent = new File(file.getAbsolutePath()).getParentFile();
+		if(parent==null || !parent.exists()){//父目录不存在，创建
+			parent.mkdirs();
 		}
 		logger.info("Start to print file, "+file.getAbsolutePath());		
 		PrintWriter pw =null;
@@ -106,7 +107,6 @@ public class Write<T> {
 			logger.info("Finish printing the file, "+file.getAbsolutePath());
 			return true;
 		} catch (Exception e) {
-			logger.error(e.getStackTrace().toString());
 			throw e;
 		}finally{
 			pw.close();

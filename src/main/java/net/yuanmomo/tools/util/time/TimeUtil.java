@@ -22,13 +22,13 @@
  * Company      : 北京华青融天技术有限责任公司  
  */
 
-package net.yuanmomo.tools.time;
+package net.yuanmomo.tools.util.time;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import net.yuanmomo.tools.string.StringUtil;
+import net.yuanmomo.tools.util.string.StringUtil;
 
 /**
  * ClassName : TimeUtil 

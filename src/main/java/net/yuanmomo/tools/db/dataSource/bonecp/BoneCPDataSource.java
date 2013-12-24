@@ -16,7 +16,7 @@ import java.util.Map;
 
 import net.yuanmomo.tools.db.dataSource.DataSource;
 import net.yuanmomo.tools.db.dataSource.ParamMap;
-import net.yuanmomo.tools.properties.PropertiesUtil;
+import net.yuanmomo.tools.util.properties.PropertiesUtil;
 
 import com.jolbox.bonecp.BoneCP;
 import com.jolbox.bonecp.BoneCPConfig;

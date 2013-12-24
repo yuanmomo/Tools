@@ -22,7 +22,7 @@
  * Company      : 北京华青融天技术有限责任公司  
  */
 
-package net.yuanmomo.tools.string;
+package net.yuanmomo.tools.util.string;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

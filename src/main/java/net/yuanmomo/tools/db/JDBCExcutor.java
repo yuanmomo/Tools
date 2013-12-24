@@ -30,7 +30,7 @@ import java.sql.ResultSet;
 import java.util.Date;
 import java.util.List;
 
-import net.yuanmomo.tools.string.StringUtil;
+import net.yuanmomo.tools.util.string.StringUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -73,7 +73,6 @@ public class JDBCExcutor<T> {
 			rs = psmt.executeQuery();
 			return ResultSetToBean.fetch(claz, rs);
 		} catch (Exception e) {
-			logger.error(e.getStackTrace().toString());
 			throw e;
 		}finally{
 			rs.close();

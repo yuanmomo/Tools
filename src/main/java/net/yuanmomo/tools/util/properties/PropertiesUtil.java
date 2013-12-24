@@ -1,7 +1,7 @@
 /**
  * 
  */
-package net.yuanmomo.tools.properties;
+package net.yuanmomo.tools.util.properties;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,15 +11,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.math.BigDecimal;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 
-import net.yuanmomo.tools.path.PathUtil;
-import net.yuanmomo.tools.string.StringUtil;
+import net.yuanmomo.tools.util.path.PathUtil;
+import net.yuanmomo.tools.util.string.StringUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -118,32 +117,27 @@ public class PropertiesUtil {
 				Class<?> fieldClass = field.getType();
 				Method method = cla.getDeclaredMethod("set"
 						+ StringUtil.upperFirstChar(key), fieldClass);
-
-				String simpleName = fieldClass.getSimpleName();
-				if (simpleName.equals("String")) {
-					method.invoke(bean, Boolean.parseBoolean(value));
-				}  else if (simpleName.equals("int")) {
-					method.invoke(bean, Byte.parseByte(value));
-				} else if (simpleName.equals("long")) {
-					method.invoke(bean, Short.parseShort(value));
-				} else if (simpleName.equals("char")) {
-					method.invoke(bean,value.length()>0 ? value.charAt(0): ' ');
-				} else if (simpleName.equals("byte")) {
+				String fieldType= fieldClass.getSimpleName();
+				logger.debug("Set value = "+ value+ " to property="+field.getName());
+				if ("String".equals(fieldType)) {
+					method.invoke(bean, String.valueOf(value));
+				} else if("int".equals(fieldType) || "Integer".equals(fieldType)) {
 					method.invoke(bean, Integer.parseInt(value));
-				} else if (simpleName.equals("short")) {
+				} else if ("long".equals(fieldType) || "Long".equals(fieldType)) {
 					method.invoke(bean, Long.parseLong(value));
-				} else if (simpleName.equals("float")) {
+				} else if("boolean".equals(fieldType) || "Boolean".equals(fieldType)) {
+					method.invoke(bean, Boolean.parseBoolean(value));
+				} else if("char".equals(fieldType) || "Character".equals(fieldType)) {
+					method.invoke(bean,value.charAt(0));
+				} else if ("byte".equals(fieldType) || "Byte".equals(fieldType)) {
+					method.invoke(bean, Byte.parseByte(value));
+				} else if ("short".equals(fieldType) || "Short".equals(fieldType)) {
+					method.invoke(bean, Short.parseShort(value));
+				} else if ("float".equals(fieldType) || "Float".equals(fieldType)) {
 					method.invoke(bean, Float.parseFloat(value));
-				} else if (simpleName.equals("double")) {
+				} else if ("double".equals(fieldType) || "Double".equals(fieldType)) {
 					method.invoke(bean, Double.parseDouble((String) value));
-				} else if (simpleName.equals("boolean")) {
-					method.invoke(bean, value);
-				} else{
-					BigDecimal bd = new BigDecimal(value);
-					Method convertMethod = bd.getClass().getDeclaredMethod(
-							simpleName + "Value");
-					method.invoke(bean, convertMethod.invoke(bd));
-				}
+				} 
 			} catch (NoSuchFieldException ex) {
 				continue;
 			} catch (Exception ex) {
@@ -155,8 +149,6 @@ public class PropertiesUtil {
 	
 	/**
 	 * propertiesToBean: 将properties对象封装到一个bean对象. <br/>
-	 * TODO .<br/>
-	 * TODO .<br/>
 	 *
 	 * @author Hongbin Yuan
 	 * @param cla
@@ -166,7 +158,6 @@ public class PropertiesUtil {
 	 * @since JDK 1.6
 	 */
 	public static<T> T propertiesToBean(Class<T> cla, Properties prop) throws Exception{
-		logger.debug("Convert the Properties Object back to a Map Object");
 		Map<String, String> map = propertiesToMap(prop);
 		return mapToBean(cla, map);
 	}

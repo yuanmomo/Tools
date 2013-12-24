@@ -22,7 +22,7 @@
  * Company      : 北京华青融天技术有限责任公司  
  */
 
-package net.yuanmomo.tools.path;
+package net.yuanmomo.tools.util.path;
 
 import java.io.File;
 import java.net.URI;

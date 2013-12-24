@@ -22,7 +22,7 @@
  * Company      : 北京华青融天技术有限责任公司  
  */
 
-package net.yuanmomo.tools.common;
+package net.yuanmomo.tools.util.common;
 /**
  * ClassName : MD5 
  * Function  : 计算执行的字符串的MD5值

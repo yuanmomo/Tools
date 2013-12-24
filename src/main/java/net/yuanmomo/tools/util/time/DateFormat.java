@@ -13,55 +13,33 @@
  *  limitations under the License.
  *
  * Project Name : Tools
- * Package Name : net.yuanmomo.tools.properties
- * Created on   : Jun 20, 20132:34:47 PM
- * File Name    : TestCatch.java
+ * Package Name : net.yuanmomo.tools.time
+ * Created on   : Jun 24, 20131:49:45 PM
+ * File Name    : DateFormat.java
  *
  * Author       : yuanmomo
  * Blog         : yuanmomo.net
  * Company      : 北京华青融天技术有限责任公司  
  */
 
-package net.yuanmomo.tools.properties;
+package net.yuanmomo.tools.util.time;
 /**
- * ClassName : TestCatch 
+ * ClassName : DateFormat 
  * Function  : TODO ADD FUNCTION. 
  * Reason    : TODO ADD REASON. 
- * Date      : Jun 20, 2013 2:34:47 PM 
+ * Date      : Jun 24, 2013 1:49:45 PM 
  *
  * @author   : MoMo
  * @version  
  * @since      JDK 1.6
  * @see 	 
  */
-public class TestCatch {
-	public static void main(String[] args) {
-		try {
-			System.out.println(fun()==null);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	public static A fun() throws Exception{
-		A a=new A();
-		try {
-			a.print();
-			System.out.println("In try...a==null??"+(a==null));
-			System.out.println(1/0);
-		} catch (Exception e) {
-			System.out.println("In catch...a=null");
-			a=null;
-			System.out.println("In catch...a==null??"+(a==null));
-			throw e;
-		}
-		System.out.println("In fun...a==null??"+a==null);
-		return a;
-	}
-}
+public class DateFormat {
+	public static final String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
 
-class A{
-	public void print(){
-		System.out.println("A.print()......");
-	}
+	public static final String YYYY_MM_DD_HH_MM = "yyyy-MM-dd HH:mm";
+	
+	public static final String YYYY_MM_DD = "yyyy-MM-dd";
+
+	public static final String YYYY_MM = "yyyy-MM";
 }

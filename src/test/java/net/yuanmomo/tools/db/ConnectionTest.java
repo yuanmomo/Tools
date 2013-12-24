@@ -22,7 +22,7 @@
  * Company      : 北京华青融天技术有限责任公司  
  */
 
-package net.yuanmomo.tools.properties;
+package net.yuanmomo.tools.db;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -30,8 +30,11 @@ import java.util.Map;
 
 import net.yuanmomo.tools.db.dataSource.DataSource;
 import net.yuanmomo.tools.db.dataSource.bonecp.BoneCPDataSource;
+import net.yuanmomo.tools.util.properties.PropertiesUtil;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -45,9 +48,12 @@ import org.junit.Test;
  * @since      JDK 1.6
  * @see 	 
  */
-public class TestDBConnection {
+public class ConnectionTest {
+	private static Logger logger = LoggerFactory.getLogger(ConnectionTest.class);
+	
 	@Test
-	public void testConnection(){
+	public void testFetchBoneCPConnection(){
+		logger.debug("Start to test ConnectionTest.testFetchBoneCPConnection()....................");
 		DataSource ds = new BoneCPDataSource();
 		Connection con = null ;
 		try {
@@ -55,20 +61,26 @@ public class TestDBConnection {
 			ds.init(params);
 			con = ds.getConnection();
 		} catch (SQLException e1) {
-			e1.printStackTrace();
+			logger.error(e1.getStackTrace().toString());
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error",e);
 		}
 		try {
-			System.out.println(con==null?"null":con);
+			assert(con!=null);
+			if(con != null){
+				logger.info("Success to fetch a connection..." + con);
+			}else{
+				throw new Exception("Cannot fetch connection form BoneCP according to the config file.");
+			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error",e);
 		}finally{
 			try {
 				ds.returnConnection(con);
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.error("Error",e);
 			}
 		}
+		logger.debug("Finish Testing ConnectionTest.testFetchBoneCPConnection()....................");
 	}
 }

@@ -22,13 +22,13 @@
  * Company      : 北京华青融天技术有限责任公司  
  */
 
-package net.yuanmomo.tools.properties;
+package net.yuanmomo.tools.util.common;
 
 import java.util.Random;
 
-import net.yuanmomo.tools.common.MD5;
-
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * ClassName : TestMD5 
@@ -41,10 +41,13 @@ import org.junit.Test;
  * @since      JDK 1.6
  * @see 	 
  */
-public class TestMD5 {
+public class MD5Test {
+	private static Logger logger = LoggerFactory.getLogger(MD5Test.class);
+	
 	@Test
 	public void testMD5(){
-		int totalRunTime=1;//一共运行多少次
+		logger.debug("Start to test MD5Test.testMD5()....................");
+		int totalRunTime=10;//一共运行多少次
 		//生成的字符串最少的长度
 		int strMinLength=32;
 		//生成的字符串最大的长度
@@ -63,20 +66,13 @@ public class TestMD5 {
 			String current= currentString.toString();
 			System.out.println("当前加密第 "+ j +" 个字符串 : "+current);
 			if(!MD5.getMD5(current.getBytes()).equals(MD5.getMD5(current))){
-				System.out.println("两张方法加密出来的结果不一样，不能这样修改。。");
-				System.out.println("MD5.getMD5(bytes)："+ MD5.getMD5(current.getBytes()));
-				System.out.println("MD5.getMD5(String)："+MD5.getMD5(current));
+				logger.info("两张方法加密出来的结果不一样，不能这样修改。。");
+				logger.info("MD5.getMD5(bytes)："+ MD5.getMD5(current.getBytes()));
+				logger.info("MD5.getMD5(String)："+MD5.getMD5(current));
 				return;
 			}
 		}
-		System.out.println("测试结果完成，可以这样修改");
-	}
-	@Test
-	public void testRand(){
-		Random ran=new Random();
-		for(int i=0;i<100;i++){
-			System.out.println(ran.nextInt());
-		}
-		Math.random();
+		logger.info("测试结果完成，可以这样修改");
+		logger.debug("Finish Testing MD5Test.testMD5()....................");
 	}
 }

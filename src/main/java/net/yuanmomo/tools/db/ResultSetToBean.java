@@ -34,9 +34,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.yuanmomo.tools.properties.PropertiesUtil;
-import net.yuanmomo.tools.time.DateFormat;
-import net.yuanmomo.tools.time.TimeUtil;
+import net.yuanmomo.tools.util.properties.PropertiesUtil;
+import net.yuanmomo.tools.util.time.DateFormat;
+import net.yuanmomo.tools.util.time.TimeUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

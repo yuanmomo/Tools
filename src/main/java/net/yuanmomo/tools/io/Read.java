@@ -31,8 +31,8 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.yuanmomo.tools.path.PathUtil;
-import net.yuanmomo.tools.string.StringUtil;
+import net.yuanmomo.tools.util.path.PathUtil;
+import net.yuanmomo.tools.util.string.StringUtil;
 
 /**
  * ClassName : Reade 
@@ -117,12 +117,44 @@ public class Read {
 	 * @since JDK 1.6
 	 */
 	public static List<String> fileToList(String path,String encoding) throws Exception{
-		BufferedReader reader = readFile(path,encoding);
-		String strLine = null;
-		List<String> list = new ArrayList<String>();
-		while((strLine = reader.readLine()) !=null){
-			list.add(strLine);
+		BufferedReader reader = null;
+		try {
+			reader = readFile(path,encoding);
+			String strLine = null;
+			List<String> list = new ArrayList<String>();
+			while((strLine = reader.readLine()) !=null){
+				list.add(strLine);
+			}
+			return list;
+		} catch (Exception e) {
+			throw e;
+		} finally{
+			reader.close();
 		}
-		return list;
+	}
+	/**
+	 * fileToList: 读取文件，按每行转换成一个String List. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param path
+	 * @return
+	 * @throws Exception
+	 * @since JDK 1.6
+	 */
+	public static List<String> fileToList(String path) throws Exception {
+		BufferedReader reader = null;
+		try {
+			reader = readFile(path,null);
+			String strLine = null;
+			List<String> list = new ArrayList<String>();
+			while((strLine = reader.readLine()) !=null){
+				list.add(strLine);
+			}
+			return list;
+		} catch (Exception e) {
+			throw e;
+		} finally{
+			reader.close();
+		}
 	}
 }

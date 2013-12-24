@@ -52,6 +52,6 @@ public class ParamMap {
 	public static String BONECP_CLOSE_CONNECTION_WATCH ="closeConnectionWatch";
 	public static String BONECP_LOG_STATEMENTS_ENABLED ="logStatementsEnabled";
 	
-	/**************************** BoneCP configuration end ******************************************/
+	/**************************** BoneCP configuration end ********************************************/
 	/**************************************************************************************************/
 }

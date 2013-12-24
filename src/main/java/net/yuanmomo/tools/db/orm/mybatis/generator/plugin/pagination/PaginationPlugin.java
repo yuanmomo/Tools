@@ -9,7 +9,7 @@
  * Company      : 成都逗溜网科技有限公司  
  */
 
-package net.yuanmomo.tools.db.orm.mybatis.generator.plugin;
+package net.yuanmomo.tools.db.orm.mybatis.generator.plugin.pagination;
 /**
  * ClassName : PaginationPlugin 
  * Function  : TODO ADD FUNCTION. 

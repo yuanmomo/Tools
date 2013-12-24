@@ -62,7 +62,7 @@ public class StringUtil {
 		return count;
 	}
 	/**
-	 * isBlank: 判断字符串是否为null. <br/>
+	 * isBlank: 判断字符串为空. <br/>
 	 *
 	 * @author Hongbin Yuan
 	 * @param str
@@ -79,7 +79,7 @@ public class StringUtil {
 		return false;
 	}
 	/**
-	 * isNotBlank: . <br/>
+	 * isNotBlank: 判断字符串不为空. <br/>
 	 * TODO .<br/>
 	 * TODO .<br/>
 	 *

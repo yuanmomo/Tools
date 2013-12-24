@@ -16,7 +16,9 @@
 
 		<!-- MyBatis generator 自带的是假分页，效率很低 -->
 		<!-- <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" /> -->
-		<plugin type="net.yuanmomo.tools.db.orm.mybatis.generator.plugin.PaginationPlugin" />
+		<plugin type="net.yuanmomo.tools.db.orm.mybatis.generator.plugin.pagination.PaginationPlugin" />
+		<!-- MyBatis generator 别名插件-->
+		<plugin type="net.yuanmomo.tools.db.orm.mybatis.generator.plugin.alias.AliasPlugin" />
 		<commentGenerator>
 			<property name="suppressAllComments" value="true" />
 			<property name="suppressDate" value="true" />

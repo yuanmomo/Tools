@@ -23,7 +23,7 @@ public class PropertiesUtilTest {
 	public void testPropertiesToBean(){
 		logger.debug("Start to test ConnectionTest.testFetchBoneCPConnection()....................");
 		try {
-			logger.info(PropertiesUtil.propertiesToBean(Bean.class, "E:\\Document\\GitRepository\\Tools\\src\\test\\resources\\net\\yuanmomo\\tools\\util\\properties\\bean.properties").toString());
+			logger.info(PropertiesUtil.propertiesToBean(Bean.class, "src\\test\\resources\\net\\yuanmomo\\tools\\util\\properties\\bean.properties").toString());
 			logger.info(PropertiesUtil.propertiesToBean(Bean.class, this.getClass().getClassLoader().getResource("net/yuanmomo/tools/util/properties/bean.properties").toURI()).toString());
 		} catch (URISyntaxException e) {
 			logger.error("Error",e);

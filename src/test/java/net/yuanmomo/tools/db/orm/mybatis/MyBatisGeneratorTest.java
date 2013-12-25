@@ -23,6 +23,8 @@ package net.yuanmomo.tools.db.orm.mybatis;
 import net.yuanmomo.tools.db.orm.mybatis.generator.MyBatisGeneratorTool;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * ClassName : MyBatisGeneratorTest 
@@ -36,8 +38,12 @@ import org.junit.Test;
  * @see 	 
  */
 public class MyBatisGeneratorTest {
+	private static Logger logger = LoggerFactory.getLogger(MyBatisGeneratorTest.class);
+	
 	 @Test
 	 public void testGenerator(){
+		 logger.debug("Start to test MyBatisGeneratorTest.testGenerator()....................");
 		 MyBatisGeneratorTool.generate("src\\main\\resources\\net\\yuanmomo\\tools\\db\\orm\\mybatis\\generatorConfig.xml");
+		 logger.debug("Finish Testing MyBatisGeneratorTest.testGenerator()....................");
 	 }
 }

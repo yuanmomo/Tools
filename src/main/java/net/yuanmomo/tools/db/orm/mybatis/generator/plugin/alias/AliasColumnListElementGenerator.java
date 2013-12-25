@@ -30,7 +30,8 @@ import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.codegen.mybatis3.MyBatis3FormattingUtilities;
 
 /**
- * ClassName : AliasColumnListElementGenerator Function : TODO ADD FUNCTION.
+ * ClassName : AliasColumnListElementGenerator 
+ * Function : TODO ADD FUNCTION.
  * Reason : TODO ADD REASON. Date : 2013-12-25 上午12:51:03
  * 
  * @author : Hongbin Yuan
@@ -42,11 +43,11 @@ public class AliasColumnListElementGenerator {
 	private String resultMapId = "Alias_Column_List";
 	
 	/**
-	 * addElements: . <br/>
+	 * addElements: 在当前的parentElement元素中添加别名列元素. <br/>
 	 *
 	 * @author Hongbin Yuan
-	 * @param parentElement
-	 * @param introspectedTable
+	 * @param parentElement			父元素，新的elements将作为子元素添加到该元素
+	 * @param introspectedTable		当前表的信息
 	 * @since JDK 1.6
 	 */
 	public void addElements(XmlElement parentElement,IntrospectedTable introspectedTable) {

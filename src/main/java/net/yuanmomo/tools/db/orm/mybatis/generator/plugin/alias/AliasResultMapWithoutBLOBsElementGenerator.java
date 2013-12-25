@@ -44,6 +44,14 @@ public class AliasResultMapWithoutBLOBsElementGenerator {
 	
 	private String resultMapId = "AliasResultMap";
 	
+	/**
+	 * addElements: 在当前的parentElement元素中添加别名ReulstMap列元素. <br/>
+	 *
+	 * @author Hongbin Yuan			父元素，新的elements将作为子元素添加到该元素
+	 * @param parentElement
+	 * @param introspectedTable		当前表的信息
+	 * @since JDK 1.6
+	 */
 	public void addElements(XmlElement parentElement,IntrospectedTable introspectedTable) {
 		XmlElement answer = new XmlElement("resultMap"); //$NON-NLS-1$
 		answer.addAttribute(new Attribute("id", resultMapId));
@@ -69,6 +77,14 @@ public class AliasResultMapWithoutBLOBsElementGenerator {
 		parentElement.addElement(answer);
 	}
 
+	/**
+	 * addResultMapElements: . <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param answer
+	 * @param introspectedTable
+	 * @since JDK 1.6
+	 */
 	private void addResultMapElements(XmlElement answer,IntrospectedTable introspectedTable) {
 		// 得到当前表的名字
 		String tableName = introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime();
@@ -118,6 +134,14 @@ public class AliasResultMapWithoutBLOBsElementGenerator {
 		}
 	}
 
+	/**
+	 * addResultMapConstructorElements: . <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param answer
+	 * @param introspectedTable
+	 * @since JDK 1.6
+	 */
 	private void addResultMapConstructorElements(XmlElement answer,IntrospectedTable introspectedTable) {
 		// 得到当前表的名字
 		String tableName = introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime();

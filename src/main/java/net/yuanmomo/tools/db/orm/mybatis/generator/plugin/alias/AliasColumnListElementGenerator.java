@@ -66,11 +66,10 @@ public class AliasColumnListElementGenerator {
 			
 			sb.append(tableName +"."+ MyBatis3FormattingUtilities.getSelectListPhrase(cloumn).toUpperCase());
 			sb.append("\t\t\tAS\t").append(tableName +"_"+ MyBatis3FormattingUtilities.getSelectListPhrase(cloumn).toUpperCase());
-			sb.append("\n");
 			if (iter.hasNext()) {
 				sb.append(", "); //$NON-NLS-1$
 			}
-
+			sb.append("\n");
 			if (sb.length() > 80) {
 				answer.addElement(new TextElement(sb.toString()));
 				sb.setLength(0);

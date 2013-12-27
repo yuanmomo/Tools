@@ -29,7 +29,7 @@ import java.text.SimpleDateFormat;
 
 /**
  * ClassName : DateFormat 
- * Function  : TODO ADD FUNCTION. 
+ * Function  : 日期格式转换器，包含日期格式，该格式的长度以及一个相应的SimpleDateFormat的转换器. 
  * Reason    : TODO ADD REASON. 
  * Date      : Jun 24, 2013 1:49:45 PM 
  *

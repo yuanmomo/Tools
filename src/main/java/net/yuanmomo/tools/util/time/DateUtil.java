@@ -25,6 +25,7 @@
 package net.yuanmomo.tools.util.time;
 
 import java.text.ParseException;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -128,5 +129,21 @@ public class DateUtil {
 	public static Date strToDate(String str) throws ParseException{
 		DateFormat dateFormat = DateFormatUtil.getDefaultDateFormat();
 		return strToDate(str,dateFormat);
+	}
+	
+	/**
+	 * getCurrentDate: 得到当前日期. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @return
+	 * @since JDK 1.6
+	 */
+	public static Date getCurrentDate(){
+		Calendar c = Calendar.getInstance();
+		c.set(Calendar.HOUR_OF_DAY, 0);
+		c.set(Calendar.MINUTE, 0);
+		c.set(Calendar.SECOND, 0);
+		c.set(Calendar.MILLISECOND, 0);
+		return c.getTime();
 	}
 }

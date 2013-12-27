@@ -65,8 +65,8 @@ public class AliasColumnListElementGenerator {
 			IntrospectedColumn cloumn = iter.next();
 			
 			sb.append(tableName +"."+ MyBatis3FormattingUtilities.getSelectListPhrase(cloumn).toUpperCase());
-			sb.append("\t\t\tAS\t\t").append(tableName +"_"+ MyBatis3FormattingUtilities.getSelectListPhrase(cloumn).toUpperCase());
-
+			sb.append("\t\t\tAS\t").append(tableName +"_"+ MyBatis3FormattingUtilities.getSelectListPhrase(cloumn).toUpperCase());
+			sb.append("\n");
 			if (iter.hasNext()) {
 				sb.append(", "); //$NON-NLS-1$
 			}

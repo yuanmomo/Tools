@@ -35,8 +35,8 @@ import java.util.List;
 import java.util.Map;
 
 import net.yuanmomo.tools.util.properties.PropertiesUtil;
-import net.yuanmomo.tools.util.time.DateFormat;
-import net.yuanmomo.tools.util.time.TimeUtil;
+import net.yuanmomo.tools.util.time.DateFormatUtil;
+import net.yuanmomo.tools.util.time.DateUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,7 +71,7 @@ public class ResultSetToBean<T>{
 				switch(columnType){
 					case Types.TIMESTAMP :
 						Timestamp time=rs.getTimestamp(i);
-						columnNameValue=TimeUtil.dateToString(new Date(time.getTime()),DateFormat.YYYY_MM_DD_HH_MM_SS);
+						columnNameValue=DateUtil.dateToString(new Date(time.getTime()),DateFormatUtil.getDefaultDateFormat());
 						break;
 					default : columnNameValue= rs.getString(i);
 				}

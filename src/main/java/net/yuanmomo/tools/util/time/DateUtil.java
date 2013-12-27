@@ -25,10 +25,7 @@
 package net.yuanmomo.tools.util.time;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import net.yuanmomo.tools.util.string.StringUtil;
 
 /**
  * ClassName : TimeUtil 
@@ -41,7 +38,8 @@ import net.yuanmomo.tools.util.string.StringUtil;
  * @since      JDK 1.6
  * @see 	 
  */
-public class TimeUtil {
+public class DateUtil {
+	
 	/**
 	 * dateToString: 将指定的Date对象转换为字符串. <br/>
 	 *
@@ -52,15 +50,40 @@ public class TimeUtil {
 	 * @since JDK 1.6
 	 */
 	public static String dateToString(Date date,String format){
-		Date time = date;
-		if(time == null){
-			time = new Date();
-		}
-		if(StringUtil.isBlank(format)){
-			format = DateFormat.YYYY_MM_DD_HH_MM_SS;
-		}
-		return  new SimpleDateFormat(format).format(time);
+		DateFormat dateFormat = DateFormatUtil.getDateFormat(format);
+		return dateToString(date,dateFormat);
 	}
+	
+	/**
+	 * dateToString: 将指定的Date对象转换为字符串. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param date
+	 * @param format
+	 * @return
+	 * @since JDK 1.6
+	 */
+	public static String dateToString(Date date,DateFormat format){
+		if(date == null){
+			return null;
+		}
+		return format.getDateFormat().format(date);
+	}
+	
+	/**
+	 * dateToString: 将指定的Date对象转换为字符串. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param date
+	 * @param format
+	 * @return
+	 * @since JDK 1.6
+	 */
+	public static String dateToString(Date date){
+		DateFormat dateFormat = DateFormatUtil.getDefaultDateFormat();
+		return  dateToString(date,dateFormat);
+	}
+	
 	/**
 	 * strToDate: 将指定的字符串转换为Date对象. <br/>
 	 *
@@ -72,12 +95,38 @@ public class TimeUtil {
 	 * @since JDK 1.6
 	 */
 	public static Date strToDate(String str,String format) throws ParseException{
+		DateFormat dateFormat = DateFormatUtil.getDateFormat(format);
+		return strToDate(str,dateFormat);
+	}
+	
+	/**
+	 * strToDate: 将指定的字符串转换为Date对象. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param str
+	 * @param format
+	 * @return
+	 * @throws ParseException
+	 * @since JDK 1.6
+	 */
+	public static Date strToDate(String str,DateFormat format) throws ParseException{
 		if(str==null){
 			return new Date();
 		}
-		if(StringUtil.isBlank(format)){
-			format=DateFormat.YYYY_MM_DD_HH_MM_SS;
-		}
-		return new SimpleDateFormat(format).parse(str);
+		return format.getDateFormat().parse(str);
+	}
+	/**
+	 * strToDate: 将指定的字符串转换为Date对象. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param str
+	 * @param format
+	 * @return
+	 * @throws ParseException
+	 * @since JDK 1.6
+	 */
+	public static Date strToDate(String str) throws ParseException{
+		DateFormat dateFormat = DateFormatUtil.getDefaultDateFormat();
+		return strToDate(str,dateFormat);
 	}
 }

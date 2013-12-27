@@ -23,6 +23,10 @@
  */
 
 package net.yuanmomo.tools.util.time;
+
+import java.text.SimpleDateFormat;
+
+
 /**
  * ClassName : DateFormat 
  * Function  : TODO ADD FUNCTION. 
@@ -35,11 +39,54 @@ package net.yuanmomo.tools.util.time;
  * @see 	 
  */
 public class DateFormat {
-	public static final String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
 
-	public static final String YYYY_MM_DD_HH_MM = "yyyy-MM-dd HH:mm";
+	private final String format;
+	private final int formatLength;
+	private SimpleDateFormat dateFormat;
 	
-	public static final String YYYY_MM_DD = "yyyy-MM-dd";
+	public DateFormat(String format){
+		this.format = format;
+		this.formatLength = format.length();
+		this.dateFormat = new SimpleDateFormat(format);
+	}
 
-	public static final String YYYY_MM = "yyyy-MM";
+	/**
+	 * dateFormat.
+	 *
+	 * @return  the dateFormat
+	 * @since   JDK 1.6
+	 */
+	public SimpleDateFormat getDateFormat() {
+		return dateFormat;
+	}
+
+	/**
+	 * dateFormat.
+	 *
+	 * @param   dateFormat    the dateFormat to set
+	 * @since   JDK 1.6
+	 */
+	public void setDateFormat(SimpleDateFormat dateFormat) {
+		this.dateFormat = dateFormat;
+	}
+
+	/**
+	 * format.
+	 *
+	 * @return  the format
+	 * @since   JDK 1.6
+	 */
+	public String getFormat() {
+		return format;
+	}
+
+	/**
+	 * formatLength.
+	 *
+	 * @return  the formatLength
+	 * @since   JDK 1.6
+	 */
+	public int getFormatLength() {
+		return formatLength;
+	}
 }

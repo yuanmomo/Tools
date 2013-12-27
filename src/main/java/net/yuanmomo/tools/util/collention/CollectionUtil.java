@@ -20,7 +20,8 @@
 
 package net.yuanmomo.tools.util.collention;
 
-import java.util.List;
+import java.util.Collection;
+import java.util.Map;
 
 /**
  * ClassName : ListUtil 
@@ -33,30 +34,56 @@ import java.util.List;
  * @since      JDK 1.6
  * @see 	 
  */
-public class ListUtil {
+public class CollectionUtil {
 	/**
-	 * isNull: 判断制定的集合为空. <br/>
+	 * isNull: 判断指定的集合为空. <br/>
 	 *
 	 * @author Hongbin Yuan
-	 * @param list
+	 * @param con
 	 * @return
 	 * @since JDK 1.6
 	 */
-	public static boolean isNull(List<?> list){
-		if(list == null || list.size() == 0){
+	public static boolean isNull(Collection<?> con){
+		if(con == null || con.size() == 0){
 			return true;
 		}
 		return false;
 	}
 	/**
-	 * isNotNull:  判断制定的集合不为空. <br/>
+	 * isNotNull:  判断指定的集合不为空. <br/>
 	 *
 	 * @author Hongbin Yuan
-	 * @param list
+	 * @param con
 	 * @return
 	 * @since JDK 1.6
 	 */
-	public static boolean isNotNull(List<?> list){
-		return !isNull(list);
+	public static boolean isNotNull(Collection<?> con){
+		return !isNull(con);
+	}
+	
+	/**
+	 * isNull: 判断指定的集合为空. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param con
+	 * @return
+	 * @since JDK 1.6
+	 */
+	public static boolean isNull(Map<?,?> map){
+		if(map == null || map.size() == 0){
+			return true;
+		}
+		return false;
+	}
+	/**
+	 * isNotNull:  判断指定的集合不为空. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param con
+	 * @return
+	 * @since JDK 1.6
+	 */
+	public static boolean isNotNull(Map<?,?> map){
+		return !isNull(map);
 	}
 }

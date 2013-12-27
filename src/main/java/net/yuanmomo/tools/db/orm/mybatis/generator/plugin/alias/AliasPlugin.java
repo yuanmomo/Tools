@@ -22,7 +22,7 @@ package net.yuanmomo.tools.db.orm.mybatis.generator.plugin.alias;
 
 import java.util.List;
 
-import net.yuanmomo.tools.util.collention.ListUtil;
+import net.yuanmomo.tools.util.collention.CollectionUtil;
 import net.yuanmomo.tools.util.string.StringUtil;
 
 import org.mybatis.generator.api.IntrospectedTable;
@@ -127,12 +127,12 @@ public class AliasPlugin extends PluginAdapter {
 			return xmlElement;
 		}
 		List<Element> elementList = xmlElement.getElements();
-		if(ListUtil.isNotNull(elementList)){
+		if(CollectionUtil.isNotNull(elementList)){
 			for(Element e : elementList){
 				if(e instanceof XmlElement){
 					XmlElement eXML = (XmlElement)e;
 					List<Attribute> eXMLAttrList = eXML.getAttributes();
-					if(ListUtil.isNotNull(elementList)){
+					if(CollectionUtil.isNotNull(elementList)){
 						for(Attribute a : eXMLAttrList){
 							if(a!=null && "id".equals(a.getName()) && value.equals(a.getValue())){
 								return eXML;

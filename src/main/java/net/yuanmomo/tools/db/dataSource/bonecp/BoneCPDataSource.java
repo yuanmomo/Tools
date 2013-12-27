@@ -17,6 +17,7 @@ import java.util.Map;
 import net.yuanmomo.tools.db.dataSource.DataSource;
 import net.yuanmomo.tools.db.dataSource.ParamMap;
 import net.yuanmomo.tools.util.properties.PropertiesUtil;
+import net.yuanmomo.tools.util.string.StringUtil;
 
 import com.jolbox.bonecp.BoneCP;
 import com.jolbox.bonecp.BoneCPConfig;
@@ -120,34 +121,47 @@ public class BoneCPDataSource implements DataSource {
 		config.setPassword(params.get(ParamMap.PASSWORD));
 		
 		// BoneCP 配置参数
-		config.setPartitionCount(Integer.parseInt(params
-				.get(ParamMap.BONECP_PARTITIONCOUNT)));
-		config.setMaxConnectionsPerPartition(Integer.parseInt(params
-				.get(ParamMap.BONECP_MAX_CONNECTIONS_PER_PARTITION)));
-		config.setMinConnectionsPerPartition(Integer.parseInt(params
-				.get(ParamMap.BONECP_MIN_CONNECTIONS_PER_PARTITION)));
-		config.setAcquireIncrement(Integer.parseInt(params
-				.get(ParamMap.BONECP_ACQUIRE_INCREMENT)));
-		config.setQueryExecuteTimeLimitInMs(Integer.parseInt(params
-				.get(ParamMap.BONECP_QUERY_EXECUTE_TIME_LIMIT_IN_MS)));
-		config.setStatementsCacheSize(Integer.parseInt(params
-				.get(ParamMap.BONECP_STATEMENTS_CACHE_SIZE)));
+		if(StringUtil.isNotBlank(params.get(ParamMap.BONECP_PARTITIONCOUNT))){
+			config.setPartitionCount(Integer.parseInt(params.get(ParamMap.BONECP_PARTITIONCOUNT)));
+		}
+		if(StringUtil.isNotBlank(params.get(ParamMap.BONECP_MAX_CONNECTIONS_PER_PARTITION))){
+			config.setMaxConnectionsPerPartition(Integer.parseInt(params.get(ParamMap.BONECP_MAX_CONNECTIONS_PER_PARTITION)));
+		}
+		if(StringUtil.isNotBlank(params.get(ParamMap.BONECP_MIN_CONNECTIONS_PER_PARTITION))){
+			config.setMinConnectionsPerPartition(Integer.parseInt(params.get(ParamMap.BONECP_MIN_CONNECTIONS_PER_PARTITION)));
+		}
+		if(StringUtil.isNotBlank(params.get(ParamMap.BONECP_ACQUIRE_INCREMENT))){
+			config.setAcquireIncrement(Integer.parseInt(params.get(ParamMap.BONECP_ACQUIRE_INCREMENT)));
+		}
+		if(StringUtil.isNotBlank(params.get(ParamMap.BONECP_QUERY_EXECUTE_TIME_LIMIT_IN_MS))){
+			config.setQueryExecuteTimeLimitInMs(Integer.parseInt(params.get(ParamMap.BONECP_QUERY_EXECUTE_TIME_LIMIT_IN_MS)));
+		}
+		if(StringUtil.isNotBlank(params.get(ParamMap.BONECP_STATEMENTS_CACHE_SIZE))){
+			config.setStatementsCacheSize(Integer.parseInt(params.get(ParamMap.BONECP_STATEMENTS_CACHE_SIZE)));
+		}
 		// Mysql 8小时超时问题
-		config.setConnectionTestStatement(params
-				.get(ParamMap.BONECP_CONNECTION_TEST_STATEMENT));
-		config.setIdleConnectionTestPeriodInSeconds(Integer.parseInt(params
-				.get(ParamMap.BONECP_IDLE_CONNECTION_TEST_PERIOD_IN_SECONDS)));
-		config.setIdleMaxAgeInMinutes(Integer.parseInt(params
-				.get(ParamMap.BONECP_IDLE_MAX_AGE_IN_MINUTES)));
-		config.setMaxConnectionAgeInSeconds(Integer.parseInt(params
-				.get(ParamMap.BONECP_MAX_CONNECTION_AGE_IN_SECONDS)));
-		config.setConnectionTimeoutInMs(Integer.parseInt(params
-				.get(ParamMap.BONECP_CONNECTION_TIMEOUT_IN_MS)));
+		if(StringUtil.isNotBlank(params.get(ParamMap.BONECP_CONNECTION_TEST_STATEMENT))){
+			config.setConnectionTestStatement(params.get(ParamMap.BONECP_CONNECTION_TEST_STATEMENT));
+		}
+		if(StringUtil.isNotBlank(params.get(ParamMap.BONECP_IDLE_CONNECTION_TEST_PERIOD_IN_SECONDS))){
+			config.setIdleConnectionTestPeriodInSeconds(Integer.parseInt(params.get(ParamMap.BONECP_IDLE_CONNECTION_TEST_PERIOD_IN_SECONDS)));
+		}
+		if(StringUtil.isNotBlank(params.get(ParamMap.BONECP_IDLE_MAX_AGE_IN_MINUTES))){
+			config.setIdleMaxAgeInMinutes(Integer.parseInt(params.get(ParamMap.BONECP_IDLE_MAX_AGE_IN_MINUTES)));
+		}
+		if(StringUtil.isNotBlank(params.get(ParamMap.BONECP_MAX_CONNECTION_AGE_IN_SECONDS))){
+			config.setMaxConnectionAgeInSeconds(Integer.parseInt(params.get(ParamMap.BONECP_MAX_CONNECTION_AGE_IN_SECONDS)));
+		}
+		if(StringUtil.isNotBlank(params.get(ParamMap.BONECP_CONNECTION_TIMEOUT_IN_MS))){
+			config.setConnectionTimeoutInMs(Integer.parseInt(params.get(ParamMap.BONECP_CONNECTION_TIMEOUT_IN_MS)));
+		}
 		// 日志监控
-		config.setCloseConnectionWatch(Boolean.parseBoolean(params
-				.get(ParamMap.BONECP_CLOSE_CONNECTION_WATCH)));
-		config.setLogStatementsEnabled(Boolean.parseBoolean(params
-				.get(ParamMap.BONECP_LOG_STATEMENTS_ENABLED)));
+		if(StringUtil.isNotBlank(params.get(ParamMap.BONECP_CLOSE_CONNECTION_WATCH))){
+			config.setCloseConnectionWatch(Boolean.parseBoolean(params.get(ParamMap.BONECP_CLOSE_CONNECTION_WATCH)));
+		}
+		if(StringUtil.isNotBlank(params.get(ParamMap.BONECP_LOG_STATEMENTS_ENABLED))){
+			config.setLogStatementsEnabled(Boolean.parseBoolean(params.get(ParamMap.BONECP_LOG_STATEMENTS_ENABLED)));
+		}
 	}
 	
 	

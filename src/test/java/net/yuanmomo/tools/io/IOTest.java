@@ -24,9 +24,8 @@ public class IOTest {
 		test.add("yuanmomo2");
 		test.add("yuanmomo3");
 		test.add("yuanmomo4");
-		Write<String> out=new Write<String>();
 		try {
-			out.output("out_put.txt", test);
+			Write.output("out_put.txt", test);
 		} catch (Exception e) {
 			logger.error("Error",e);
 		}

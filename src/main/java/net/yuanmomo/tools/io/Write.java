@@ -42,7 +42,7 @@ import org.slf4j.LoggerFactory;
  * @since      JDK 1.6
  * @see 	 
  */
-public class Write<T> {
+public class Write {
 	private static Logger logger=LoggerFactory.getLogger(Write.class);
 	
 	/**
@@ -55,7 +55,7 @@ public class Write<T> {
 	 * @throws Exception
 	 * @since JDK 1.6
 	 */
-	public boolean output(String path,List<T> list)throws Exception{
+	public static<T> boolean output(String path,List<T> list)throws Exception{
 		File f=new File(path);
 		return output(f, list);
 	}
@@ -69,7 +69,7 @@ public class Write<T> {
 	 * @throws Exception
 	 * @since JDK 1.6
 	 */
-	public boolean output(URI uri,List<T> list)throws Exception{
+	public static<T> boolean output(URI uri,List<T> list)throws Exception{
 		File file=new File(uri);
 		return output(file, list);
 	}
@@ -84,7 +84,7 @@ public class Write<T> {
 	 * @throws Exception
 	 * @since JDK 1.6
 	 */
-	public boolean output(File file,List<T> list)throws Exception{
+	public static<T> boolean output(File file,List<T> list)throws Exception{
 		if(file==null){
 			return false;
 		}

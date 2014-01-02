@@ -146,4 +146,49 @@ public class DateUtil {
 		c.set(Calendar.MILLISECOND, 0);
 		return c.getTime();
 	}
+	
+	/**
+	 * getDate: 得到当前指定日期的年月日. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param date
+	 * @return
+	 * @since JDK 1.6
+	 */
+	public static Date getDate(Date date){
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		c.set(Calendar.HOUR_OF_DAY, 0);
+		c.set(Calendar.MINUTE, 0);
+		c.set(Calendar.SECOND, 0);
+		c.set(Calendar.MILLISECOND, 0);
+		return c.getTime();
+	}
+	
+	/**
+	 * addDays: 对指定的日期加上相应的天数. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param date		指定的日期
+	 * @param days		加上相应的天数，如果为负数则相减<br/>
+	 * @return
+	 * @since JDK 1.6
+	 */
+	public static Date addDays(Date date, int days){
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		c.add(Calendar.DAY_OF_YEAR, days);
+		return c.getTime();
+	}
+	/**
+	 * addDays: 对指定的日期加上相应的天数. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param days		在当前的时间上加上相应的天数，如果为负数则相减<br/>
+	 * @return
+	 * @since JDK 1.6
+	 */
+	public static Date addDays(int days){
+		return addDays(new Date(),days);
+	}
 }

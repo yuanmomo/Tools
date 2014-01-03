@@ -26,7 +26,9 @@ package net.yuanmomo.tools.util.time;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import net.yuanmomo.tools.util.collention.CollectionUtil;
@@ -51,10 +53,13 @@ public class DateFormatUtil {
 	 * formatMap:TODO 存放DateFormat的map，键为日期格式的字符串形势，值为一个DateFormat对象.
 	 * @since JDK 1.6
 	 */
-	private static  Map<String, DateFormat> formatMap;
+	private static Map<String, DateFormat> formatMap;
+	private static List<String> supported = null;
+	
 	static{
 		// 初始化自带的DateFormat
 		formatMap = new HashMap<String, DateFormat>();
+		supported = new ArrayList<String>();
 		// 反射取得Format类所有的静态变量，转换为相应的DateFormat，并放入map中
 		Field[] fields = Format.class.getDeclaredFields();
 		if(fields != null && fields.length>0){
@@ -64,6 +69,8 @@ public class DateFormatUtil {
 		            try {
 						String format = f.get(null).toString();
 						formatMap.put(format,new DateFormat(format));
+						
+						supported.add(format);
 					} catch (IllegalArgumentException e) {
 						e.printStackTrace();
 					} catch (IllegalAccessException e) {
@@ -95,6 +102,7 @@ public class DateFormatUtil {
 			}
 		}
 		formatMap.put(format, new DateFormat(format));
+		supported.add(format);
 	}
 	
 	/**
@@ -137,6 +145,17 @@ public class DateFormatUtil {
 	 */
 	public static DateFormat getDateFormat(){
 		return getDateFormat(null);
+	}
+	
+	/**
+	 * getSupportedDateFormat:取得系统支持的日期格式转换器. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @return
+	 * @since JDK 1.6
+	 */
+	public static List<String> getSupportedDateFormat(){
+		return supported;
 	}
 	
 	public class Format{

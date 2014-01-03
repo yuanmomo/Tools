@@ -191,4 +191,22 @@ public class DateUtil {
 	public static Date addDays(int days){
 		return addDays(new Date(),days);
 	}
+	
+	
+	/**
+	 * getCalendar: 返回当前date对象对应的calendar对象. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param date
+	 * @return
+	 * @since JDK 1.6
+	 */
+	public static Calendar getCalendar(Date date){
+		if(date != null){
+			Calendar c=Calendar.getInstance();
+			c.setTime(date);
+			return c;
+		}
+		return null;
+	}
 }

@@ -27,6 +27,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import net.yuanmomo.tools.util.string.StringUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -122,6 +124,27 @@ public class CollectionUtil {
 		return !isNull(map);
 	}
 	
+	
+	/**
+	 * toString: 按指定分隔符打印一个集合. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param col
+	 * @param seperator
+	 * @return
+	 * @since JDK 1.6
+	 */
+	public static<T> String toString(Collection<T> col,String seperator){
+		StringBuilder sb = new StringBuilder();
+		if(StringUtil.isBlank(seperator)){
+			seperator = "\n";
+		}
+		Iterator<T> ite = col.iterator();
+		while(ite.hasNext()){
+			sb.append(ite.next()).append(seperator);
+		}
+		return sb.toString();
+	}
 	
 	/**
 	 * convert: 将一个List转换为targetType类型的List. <br/>

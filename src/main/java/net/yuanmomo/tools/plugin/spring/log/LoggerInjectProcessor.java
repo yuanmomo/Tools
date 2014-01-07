@@ -1,8 +1,8 @@
-package net.yuanmomo.tools.log.spring;
+package net.yuanmomo.tools.plugin.spring.log;
 
 import java.lang.reflect.Field;
 
-import net.yuanmomo.tools.log.spring.annotation.Log;
+import net.yuanmomo.tools.plugin.spring.log.annotation.Log;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package net.yuanmomo.tools.log.spring.annotation;
+package net.yuanmomo.tools.plugin.spring.log.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

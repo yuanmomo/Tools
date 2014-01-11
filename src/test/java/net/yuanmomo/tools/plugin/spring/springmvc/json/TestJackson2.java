@@ -21,6 +21,7 @@
 package net.yuanmomo.tools.plugin.spring.springmvc.json;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import net.yuanmomo.tools.plugin.spring.springmvc.json.bean.Bean;
@@ -53,7 +54,7 @@ public class TestJackson2 {
 		Bean b = new Bean();
 		b.setId(10);
 		b.setName("yuanmomo");
-		b.setBirthday(null);
+		b.setBirthday(new Date());
 
 		List<Bean> list = new ArrayList<Bean>();
 		list.add(b);

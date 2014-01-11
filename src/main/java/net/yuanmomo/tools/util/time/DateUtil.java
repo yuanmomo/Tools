@@ -166,6 +166,23 @@ public class DateUtil {
 	}
 	
 	/**
+	 * getDate: 得到当前指定日期的年月日. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param date
+	 * @return
+	 * @since JDK 1.6
+	 */
+	public static Date getDate(){
+		Calendar c = Calendar.getInstance();
+		c.set(Calendar.HOUR_OF_DAY, 0);
+		c.set(Calendar.MINUTE, 0);
+		c.set(Calendar.SECOND, 0);
+		c.set(Calendar.MILLISECOND, 0);
+		return c.getTime();
+	}
+	
+	/**
 	 * addDays: 对指定的日期加上相应的天数. <br/>
 	 *
 	 * @author Hongbin Yuan

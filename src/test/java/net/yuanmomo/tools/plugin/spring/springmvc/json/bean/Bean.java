@@ -22,6 +22,8 @@ package net.yuanmomo.tools.plugin.spring.springmvc.json.bean;
 
 import java.util.Date;
 
+import net.yuanmomo.tools.util.time.DateFormatUtil.Format;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
@@ -39,7 +41,7 @@ public class Bean {
 	private int id;
 	private String name;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, 
-    		pattern="yyyy-MM-dd", timezone="GMT")
+    		pattern=Format.YYYY_MM_DD_HH_MM_SS_SSS,timezone="GMT+8")
 	private Date birthday;
 	/**
 	 * id.

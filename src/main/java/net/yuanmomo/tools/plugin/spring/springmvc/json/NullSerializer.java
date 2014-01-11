@@ -35,6 +35,9 @@ public class NullSerializer extends JsonSerializer<Object> {
 			SerializerProvider provider) throws IOException,
 			JsonProcessingException {
 		// any JSON value you want...
+		if(value instanceof Number){
+			jgen.writeString("0");
+		}
 		jgen.writeString("");
 	}
 }

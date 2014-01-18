@@ -172,5 +172,7 @@ public class DateFormatUtil {
 		public static final String YYYY_MM = "yyyy-MM";
 		
 		public static final String MM_DD_HH_MM = "MM-dd HH:mm";
+		
+		public static final String MM_DD= "MM-dd";
 	}
 }

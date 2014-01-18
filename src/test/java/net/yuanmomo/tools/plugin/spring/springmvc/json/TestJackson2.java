@@ -20,17 +20,15 @@
 
 package net.yuanmomo.tools.plugin.spring.springmvc.json;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import net.yuanmomo.tools.plugin.spring.springmvc.json.bean.Bean;
 
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ser.DefaultSerializerProvider;
 
 /**
  * ClassName : TestJackson2 
@@ -46,20 +44,19 @@ import com.fasterxml.jackson.databind.ser.DefaultSerializerProvider;
 public class TestJackson2 {
 	@Test
 	public void test() {
-		DefaultSerializerProvider sp = new DefaultSerializerProvider.Impl();
-		sp.setNullValueSerializer(new NullSerializer());
-		// And then configure mapper to use it
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.setSerializerProvider(sp);
+		CustomObjectMapper mapper = new CustomObjectMapper();
+        
+		mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+		
 		Bean b = new Bean();
 		b.setId(10);
 		b.setName("yuanmomo");
 		b.setBirthday(new Date());
-
-		List<Bean> list = new ArrayList<Bean>();
-		list.add(b);
+		b.setDate2(new Date());
+		b.setCal(Calendar.getInstance());
+		
 		try {
-			System.out.println(mapper.writeValueAsString(list));
+			System.out.println(mapper.writeValueAsString(b));
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}

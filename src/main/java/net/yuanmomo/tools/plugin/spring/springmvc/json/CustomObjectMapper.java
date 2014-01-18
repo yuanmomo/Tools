@@ -33,7 +33,7 @@ public class CustomObjectMapper extends ObjectMapper{
 
 	public CustomObjectMapper(){
         StdSerializerProvider sp = new StdSerializerProvider();
-        sp.setNullValueSerializer(new NullSerializer());
+        sp.setNullValueSerializer(NullSerializer.instance);
         this.setSerializerProvider(sp);
     }
 }

@@ -20,6 +20,7 @@
 
 package net.yuanmomo.tools.plugin.spring.springmvc.json.bean;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import net.yuanmomo.tools.util.time.DateFormatUtil.Format;
@@ -43,6 +44,46 @@ public class Bean {
 	@JsonFormat(shape=JsonFormat.Shape.STRING, 
     		pattern=Format.YYYY_MM_DD_HH_MM_SS_SSS,timezone="GMT+8")
 	private Date birthday;
+	
+	private Date date2;
+	private Calendar cal;
+	
+	/**
+	 * date2.
+	 *
+	 * @return  the date2
+	 * @since   JDK 1.6
+	 */
+	public Date getDate2() {
+		return date2;
+	}
+	/**
+	 * date2.
+	 *
+	 * @param   date2    the date2 to set
+	 * @since   JDK 1.6
+	 */
+	public void setDate2(Date date2) {
+		this.date2 = date2;
+	}
+	/**
+	 * cal.
+	 *
+	 * @return  the cal
+	 * @since   JDK 1.6
+	 */
+	public Calendar getCal() {
+		return cal;
+	}
+	/**
+	 * cal.
+	 *
+	 * @param   cal    the cal to set
+	 * @since   JDK 1.6
+	 */
+	public void setCal(Calendar cal) {
+		this.cal = cal;
+	}
 	/**
 	 * id.
 	 *

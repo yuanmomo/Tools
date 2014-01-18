@@ -12,32 +12,54 @@
 package net.yuanmomo.tools.plugin.spring.springmvc.json;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.annotation.JacksonStdImpl;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatVisitorWrapper;
+import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 /**
- * ClassName : NullSerializer 
- * Function  : TODO ADD FUNCTION. 
- * Reason    : TODO ADD REASON. 
- * Date      : 2014-1-6 下午3:09:46 
- *
- * @author   : Hongbin Yuan
- * @version  
- * @since      JDK 1.6
- * @see 	 
+ * ClassName : NullSerializer Function : TODO ADD FUNCTION. Reason : TODO ADD
+ * REASON. Date : 2014-1-6 下午3:09:46
+ * 
+ * @author : Hongbin Yuan
+ * @version
+ * @since JDK 1.6
+ * @see
  */
-public class NullSerializer extends JsonSerializer<Object> {
+@JacksonStdImpl
+public class NullSerializer extends StdSerializer<Object> {
+	public final static NullSerializer instance = new NullSerializer();
+
+	private NullSerializer() {
+		super(Object.class);
+	}
+
 	@Override
 	public void serialize(Object value, JsonGenerator jgen,
 			SerializerProvider provider) throws IOException,
-			JsonProcessingException {
-		// any JSON value you want...
-		if(value instanceof Number){
+			JsonGenerationException {
+		if (value instanceof Number) {
 			jgen.writeString("0");
 		}
 		jgen.writeString("");
+	}
+
+	@Override
+	public JsonNode getSchema(SerializerProvider provider, Type typeHint)
+			throws JsonMappingException {
+		return createSchemaNode("null");
+	}
+
+	@Override
+	public void acceptJsonFormatVisitor(JsonFormatVisitorWrapper visitor,
+			JavaType typeHint) throws JsonMappingException {
+		visitor.expectNullFormat(typeHint);
 	}
 }

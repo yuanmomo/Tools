@@ -18,13 +18,13 @@
  * Company      : 成都逗溜网科技有限公司  
  */
 
-package net.yuanmomo.tools.plugin.spring.springmvc.json;
+package net.yuanmomo.tools.json.plugin.spring.springmvc;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import net.yuanmomo.tools.plugin.spring.springmvc.json.bean.Bean;
+import net.yuanmomo.tools.plugin.spring.springmvc.bean.Bean;
 
 import org.junit.Test;
 

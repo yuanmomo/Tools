@@ -9,7 +9,7 @@
  * Company      : 成都逗溜网科技有限公司  
  */
 
-package net.yuanmomo.tools.plugin.spring.springmvc.json;
+package net.yuanmomo.tools.json.plugin.spring.springmvc;
 
 import java.io.IOException;
 import java.lang.reflect.Type;

@@ -42,7 +42,7 @@ import org.mybatis.generator.api.dom.xml.XmlElement;
  */
 public class PaginationPlugin extends PluginAdapter {
     /**
-     * modelExampleClassGenerated: bean类的criteria类中加入start和end两个属性. <br/>
+     * modelExampleClassGenerated: bean类的criteria类中加入start和count两个属性. <br/>
      *
      * @author Hongbin Yuan
      * @param topLevelClass
@@ -56,9 +56,9 @@ public class PaginationPlugin extends PluginAdapter {
         // add field, getter, setter for limit start clause
         this.addFiled(topLevelClass, introspectedTable,
                 FullyQualifiedJavaType.getIntInstance(), "start", "-1");
-        // add field, getter, setter for limit end clause
+        // add field, getter, setter for limit count clause
         this.addFiled(topLevelClass, introspectedTable,
-                FullyQualifiedJavaType.getIntInstance(), "end", "-1");
+                FullyQualifiedJavaType.getIntInstance(), "count", "-1");
         return super.modelExampleClassGenerated(topLevelClass,
                 introspectedTable);
     }
@@ -81,10 +81,10 @@ public class PaginationPlugin extends PluginAdapter {
         limitStartElement.addElement(new TextElement("limit ${start}"));
         element.addElement(limitStartElement);
 
-        // 向mapper xml中添加limit的end字句
+        // 向mapper xml中添加limit的count字句
         XmlElement limitEndElement = new XmlElement("if"); //$NON-NLS-1$
-        limitEndElement.addAttribute(new Attribute("test", "end &gt;= 0 ")); //$NON-NLS-1$ //$NON-NLS-2$
-        limitEndElement.addElement(new TextElement(",${end}"));
+        limitEndElement.addAttribute(new Attribute("test", "count &gt;= 0 ")); //$NON-NLS-1$ //$NON-NLS-2$
+        limitEndElement.addElement(new TextElement(",${count}"));
         element.addElement(limitEndElement);
 
         return super.sqlMapUpdateByExampleWithoutBLOBsElementGenerated(element,

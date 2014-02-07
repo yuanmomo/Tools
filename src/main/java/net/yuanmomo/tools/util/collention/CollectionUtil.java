@@ -1,13 +1,3 @@
-/** 
- * Project Name : Tools
- * Package Name : net.yuanmomo.tools.util.collention
- * Created on   : 2013-12-24下午11:48:08
- * File Name    : ListUtil.java
- *
- * Author       : Hongbin Yuan
- * Blog         : yuanmomo.net
- * Company      : 成都逗溜网科技有限公司  
- */
 /**
  * Project Name : Tools
  * File Name    : ListUtil.java

@@ -1,13 +1,3 @@
-/** 
- * Project Name : Tools
- * Package Name : net.yuanmomo.tools.io
- * Created on   : 2013-12-20下午4:06:42
- * File Name    : Reade.java
- *
- * Author       : Hongbin Yuan
- * Blog         : yuanmomo.net
- * Company      : 成都逗溜网科技有限公司  
- */
 /**
  * Project Name : Tools
  * File Name    : Reade.java

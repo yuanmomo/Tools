@@ -1,13 +1,3 @@
-/** 
- * Project Name : Tools
- * Package Name : net.yuanmomo.tools.plugin.spring.springmvc.json.bean
- * Created on   : 2014-1-6上午11:41:42
- * File Name    : Bean.java
- *
- * Author       : Hongbin Yuan
- * Blog         : yuanmomo.net
- * Company      : 成都逗溜网科技有限公司  
- */
 /**
  * Project Name : Tools
  * File Name    : Bean.java

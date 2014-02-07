@@ -1,13 +1,3 @@
-/** 
- * Project Name : Tools
- * Package Name : net.yuanmomo.tools.util.file
- * Created on   : 2013-12-26下午12:03:42
- * File Name    : FileUtil.java
- *
- * Author       : Hongbin Yuan
- * Blog         : yuanmomo.net
- * Company      : 成都逗溜网科技有限公司  
- */
 /**
  * Project Name : Tools
  * File Name    : FileUtil.java

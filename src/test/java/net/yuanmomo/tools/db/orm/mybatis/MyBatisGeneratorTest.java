@@ -1,13 +1,3 @@
-/** 
- * Project Name : Tools
- * Package Name : net.yuanmomo.tools.db.orm.mybatis
- * Created on   : 2013-12-24下午5:13:58
- * File Name    : MyBatisGeneratorTest.java
- *
- * Author       : Hongbin Yuan
- * Blog         : yuanmomo.net
- * Company      : 成都逗溜网科技有限公司  
- */
 /**
  * Project Name : Tools
  * File Name    : MyBatisGeneratorTest.java

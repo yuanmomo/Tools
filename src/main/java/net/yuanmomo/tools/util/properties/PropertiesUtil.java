@@ -1,6 +1,3 @@
-/**
- * 
- */
 package net.yuanmomo.tools.util.properties;
 
 import java.io.BufferedReader;
@@ -25,14 +22,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @author MoMo
- *
- */
-/**
- * @author MoMo
- *
- * @param <T>
- */
-/**
  *
  */
 public class PropertiesUtil {

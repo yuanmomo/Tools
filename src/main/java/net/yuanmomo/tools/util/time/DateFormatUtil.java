@@ -45,9 +45,6 @@ import net.yuanmomo.tools.util.string.StringUtil;
  * @since      JDK 1.6
  * @see 	 
  */
-/**
- *
- */
 public class DateFormatUtil {
 	/**
 	 * formatMap:TODO 存放DateFormat的map，键为日期格式的字符串形势，值为一个DateFormat对象.

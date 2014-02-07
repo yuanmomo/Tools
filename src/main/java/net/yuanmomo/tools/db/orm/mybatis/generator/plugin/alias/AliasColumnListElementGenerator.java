@@ -1,13 +1,3 @@
-/** 
- * Project Name : Tools
- * Package Name : net.yuanmomo.tools.db.orm.mybatis.generator.plugin.alias
- * Created on   : 2013-12-25上午12:51:03
- * File Name    : BaseColumnListElementGenerator.java
- *
- * Author       : Hongbin Yuan
- * Blog         : yuanmomo.net
- * Company      : 成都逗溜网科技有限公司  
- */
 /**
  * Project Name : Tools
  * File Name    : BaseColumnListElementGenerator.java

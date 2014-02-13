@@ -12,6 +12,7 @@ package net.yuanmomo.tools.util.collention;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -209,5 +210,22 @@ public class CollectionUtil {
 		}
 		
 		return result;
+	}
+	
+	/**
+	 * toList: 根据指定字符拆分,转换字符串为一个字符串集合. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param source
+	 * @param seperator
+	 * @return
+	 * @since JDK 1.6
+	 */
+	public static List<String> toList(String source,String seperator){
+		if(StringUtil.isNotBlank(source)){
+			String[] array = source.split(seperator);
+			return Arrays.asList(array);
+		}
+		return new ArrayList<String>();
 	}
 }

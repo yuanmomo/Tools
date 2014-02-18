@@ -13,6 +13,7 @@ package net.yuanmomo.tools.db.orm.mybatis.generator.plugin.dao;
 
 import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.yuanmomo.tools.util.string.StringUtil;
@@ -103,7 +104,7 @@ public class DAOPlugin extends PluginAdapter {
 			context.getJavaClientGeneratorConfiguration().getTargetProject(),
             context.getProperty(PropertyRegistry.CONTEXT_JAVA_FILE_ENCODING),
             context.getJavaFormatter());
-        List<GeneratedJavaFile>  gifList = introspectedTable.getGeneratedJavaFiles();
+        List<GeneratedJavaFile>  gifList = new ArrayList<GeneratedJavaFile>();
         
         gifList.add(gjf);
         
@@ -149,7 +150,7 @@ public class DAOPlugin extends PluginAdapter {
 				xmlMapperName, introspectedTable.getMyBatis3XmlMapperPackage(),
                 context.getSqlMapGeneratorConfiguration().getTargetProject(),
                 true, context.getXmlFormatter());
-		List<GeneratedXmlFile>  gxfList = introspectedTable.getGeneratedXmlFiles();
+		List<GeneratedXmlFile>  gxfList = new ArrayList<GeneratedXmlFile>();
         
 		gxfList.add(gxf);
         

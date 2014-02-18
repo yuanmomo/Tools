@@ -34,8 +34,8 @@ public class AliasExampleWhereClauseGenerator{
 
 	private boolean isForUpdateByExample;
 	
-	private static final String ALIAS_EXAMPLE_WHERE_CLAUSE_ID= "Alias_Example_Where_Clause";
-	private static final String ALIAS_UPDATE_BY_EXAMPLE_WHERE_CLAUSE_ID= "Alias_Update_By_Example_Where_Clause";
+	public static final String ALIAS_EXAMPLE_WHERE_CLAUSE_ID= "Alias_Example_Where_Clause";
+	public static final String ALIAS_UPDATE_BY_EXAMPLE_WHERE_CLAUSE_ID= "Alias_Update_By_Example_Where_Clause";
 
 	public AliasExampleWhereClauseGenerator(boolean isForUpdateByExample) {
 		this.isForUpdateByExample = isForUpdateByExample;

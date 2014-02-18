@@ -19,6 +19,10 @@
 		<plugin type="net.yuanmomo.tools.db.orm.mybatis.generator.plugin.pagination.PaginationPlugin" />
 		<!-- MyBatis generator 别名插件-->
 		<plugin type="net.yuanmomo.tools.db.orm.mybatis.generator.plugin.alias.AliasPlugin" />
+		<!-- Mapper 接口方法声明异常抛出 -->
+		<plugin type="net.yuanmomo.tools.db.orm.mybatis.generator.plugin.MapperExceptionPlugin" >
+			<property name="exceptionClass" value="java.lang.Exception"/>
+		</plugin>
 		<commentGenerator>
 			<property name="suppressAllComments" value="true" />
 			<property name="suppressDate" value="true" />
@@ -50,7 +54,7 @@
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
-		<table tableName="userTable" domainObjectName="User"
+		<table tableName="user" domainObjectName="User"
 			enableCountByExample="true" enableUpdateByExample="true"
 			enableDeleteByExample="true" enableSelectByExample="true"
 			selectByExampleQueryId="true">

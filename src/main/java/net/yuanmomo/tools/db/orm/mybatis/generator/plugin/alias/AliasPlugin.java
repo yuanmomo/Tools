@@ -96,10 +96,9 @@ public class AliasPlugin extends PluginAdapter {
 			
 			// 生成别名的 AliasColumnList
 			new AliasColumnListElementGenerator().addElements(xmlElement, introspectedTable);
-			
 		return true;
 	}
-
+	
 	/**
 	 * getElementById: 在指定的xmlElement的一级子元素中查找id值为指定value的Element. <br/>
 	 *
@@ -133,5 +132,29 @@ public class AliasPlugin extends PluginAdapter {
 			}
 		}
 		return null;
+	}
+	
+	
+	private boolean isUpdate = false;
+	
+	/**
+	 * 	 由于example where clause要生成两个,故该方法会被调用两次. where一个和 update where一个.
+	 *  为了防止重复生成,故定义一个isUpdate变量,每次调用该方法只生成一个 where clause.
+	 * 
+	 * sqlMapExampleWhereClauseElementGenerated:. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param element
+	 * @param introspectedTable
+	 * @return
+	 * @see org.mybatis.generator.api.PluginAdapter#sqlMapExampleWhereClauseElementGenerated(org.mybatis.generator.api.dom.xml.XmlElement, org.mybatis.generator.api.IntrospectedTable)
+	 */
+	@Override
+	public boolean sqlMapExampleWhereClauseElementGenerated(XmlElement element,
+			IntrospectedTable introspectedTable) {
+		new AliasExampleWhereClauseGenerator(isUpdate).addElements(element,introspectedTable);
+		
+		isUpdate = !isUpdate;
+		return true;
 	}
 }

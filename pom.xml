@@ -17,21 +17,21 @@
 		<maven-resources-plugin>2.6</maven-resources-plugin>
 		<maven-source-plugin>2.2.1</maven-source-plugin>
 		<maven-surefire-plugin>2.16</maven-surefire-plugin>
-		
+
 		<junit.version>4.11</junit.version>
-		
+
 		<mysql.version>5.1.27</mysql.version>
 		<commons.boneCP.version>0.8.0.RELEASE</commons.boneCP.version>
-		
+
 		<com.google.code.gson.version>2.2.4</com.google.code.gson.version>
-		
+
 		<jackson-2-version>2.2.3</jackson-2-version>
-		
+
 		<logback.version>1.0.9</logback.version>
 		<mybatis.version>3.2.3</mybatis.version>
 		<mybatis.generator.version>1.3.2</mybatis.generator.version>
 		<http.client.version>4.3.1</http.client.version>
-		
+
 		<org.springframework.version>3.2.4.RELEASE</org.springframework.version>
 	</properties>
 
@@ -73,7 +73,7 @@
 			<artifactId>mybatis-generator-core</artifactId>
 			<version>${mybatis.generator.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -97,9 +97,9 @@
 			<version>${com.google.code.gson.version}</version>
 		</dependency>
 		<dependency>
-		  <groupId>com.fasterxml.jackson.core</groupId>
-		  <artifactId>jackson-databind</artifactId>
-		  <version>${jackson-2-version}</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson-2-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -117,9 +117,14 @@
 			<artifactId>httpcore</artifactId>
 			<version>4.3.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-compress</artifactId>
+			<version>1.7</version>
+		</dependency>
 	</dependencies>
-	
-     <build>
+
+	<build>
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
@@ -140,7 +145,7 @@
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
 			</plugin>
-	    	 <plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
@@ -164,22 +169,22 @@
 						</goals>
 					</execution>
 				</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>${maven-surefire-plugin}</version>
-					<configuration>
-						<forkMode>once</forkMode>
-						<argLine>-Dfile.encoding=${project.build.sourceEncoding}</argLine>
-						<systemProperties>
-							<property>
-								<name>net.sourceforge.cobertura.datafile</name>
-								<value>target/cobertura/cobertura.ser</value>
-							</property>
-						</systemProperties>
-					</configuration>
-				</plugin>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin}</version>
+				<configuration>
+					<forkMode>once</forkMode>
+					<argLine>-Dfile.encoding=${project.build.sourceEncoding}</argLine>
+					<systemProperties>
+						<property>
+							<name>net.sourceforge.cobertura.datafile</name>
+							<value>target/cobertura/cobertura.ser</value>
+						</property>
+					</systemProperties>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>

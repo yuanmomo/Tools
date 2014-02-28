@@ -9,10 +9,10 @@
  * Company      : 成都逗溜网科技有限公司  
  */
 
-package net.yuanmomo.tools.proxy;
+package net.yuanmomo.tools.proxy.jdk;
 
-import net.yuanmomo.tools.proxy.impl.HelloImpl;
-import net.yuanmomo.tools.proxy.inter.Hello;
+import net.yuanmomo.tools.proxy.jdk.impl.HelloImpl;
+import net.yuanmomo.tools.proxy.jdk.inter.Hello;
 
 import org.junit.Test;
 

@@ -9,7 +9,10 @@
  * Company      : 成都逗溜网科技有限公司  
  */
 
-package net.yuanmomo.tools.proxy.inter;
+package net.yuanmomo.tools.proxy.jdk.inter;
+
+import net.yuanmomo.tools.proxy.jdk.annotion.ParamCount;
+
 /**
  * ClassName : Hello 
  * Function  : TODO ADD FUNCTION. 
@@ -24,5 +27,6 @@ package net.yuanmomo.tools.proxy.inter;
 public interface Hello {
 	public void sayHello();
 	
+	@ParamCount( count = 1)
 	public void sayHello(String name);
 }

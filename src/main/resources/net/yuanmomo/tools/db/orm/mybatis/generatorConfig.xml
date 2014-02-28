@@ -23,6 +23,8 @@
 		<plugin type="net.yuanmomo.tools.db.orm.mybatis.generator.plugin.MapperExceptionPlugin" >
 			<property name="exceptionClass" value="java.lang.RunTimeException"/>
 		</plugin>
+		
+		<plugin type="net.yuanmomo.tools.db.orm.mybatis.generator.plugin.ToStringPlugin" />
 		<!-- MyBatis generator 额外java接口和xmlmaper插件-->
 		<plugin type="net.yuanmomo.tools.db.orm.mybatis.generator.plugin.dao.DAOPlugin" >
 			<property name="typeName" value="DAO"/>

@@ -9,13 +9,14 @@
  * Company      : 成都逗溜网科技有限公司  
  */
 
-package net.yuanmomo.tools.proxy;
+package net.yuanmomo.tools.proxy.jdk;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-import net.yuanmomo.tools.proxy.inter.Hello;
+import net.yuanmomo.tools.proxy.jdk.annotion.ParamCount;
+import net.yuanmomo.tools.proxy.jdk.inter.Hello;
 
 /**
  * ClassName : HelloInvocationHandler 
@@ -53,9 +54,12 @@ public class HelloInvocationHandler implements InvocationHandler {
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args)
 			throws Throwable {
-		System.out.println("I will say somthing.....");
-		method.invoke(obj,args);
-		System.out.println("Said done!!");
+		ParamCount annotation = method.getAnnotation(ParamCount.class);
+		if(annotation!=null){
+			System.out.println(annotation.count());
+		}else{
+			System.out.println("No Annotation!!");
+		}
 		return null;
 	}
 	

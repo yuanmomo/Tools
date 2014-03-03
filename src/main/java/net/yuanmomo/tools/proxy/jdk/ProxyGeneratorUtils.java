@@ -9,11 +9,11 @@
  * Company      : 成都逗溜网科技有限公司  
  */
 
-package net.yuanmomo.tools.proxy;
+package net.yuanmomo.tools.proxy.jdk;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import net.yuanmomo.tools.proxy.impl.HelloImpl;
+import net.yuanmomo.tools.proxy.jdk.impl.HelloImpl;
 import sun.misc.ProxyGenerator;
 
 /**

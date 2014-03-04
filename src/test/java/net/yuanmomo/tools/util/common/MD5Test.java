@@ -26,6 +26,8 @@ package net.yuanmomo.tools.util.common;
 
 import java.util.Random;
 
+import net.yuanmomo.tools.util.cipher.MD5;
+
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

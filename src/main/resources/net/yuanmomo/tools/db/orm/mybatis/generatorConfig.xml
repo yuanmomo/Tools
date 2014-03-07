@@ -64,10 +64,10 @@
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
-		<table tableName="user" domainObjectName="User"
-			enableCountByExample="true" enableUpdateByExample="true"
-			enableDeleteByExample="true" enableSelectByExample="true"
-			selectByExampleQueryId="true">
+		<table tableName="user" domainObjectName="User" >
+			<generatedKey column="id" sqlStatement="mysql" identity="true" />
+		</table>
+		<table tableName="department" domainObjectName="Department">
 			<generatedKey column="id" sqlStatement="mysql" identity="true" />
 		</table>
 	</context>

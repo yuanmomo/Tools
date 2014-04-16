@@ -13,12 +13,14 @@ package net.yuanmomo.tools.httpclient;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -63,7 +65,11 @@ public class HttpClientFileUpload {
 			logger.info("请求上传文件，type="+type);
             HttpPost httppost = new HttpPost(url);
 
-            MultipartEntityBuilder builder = MultipartEntityBuilder.create().addTextBody("type", type+"");
+            MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+            builder.setCharset(Charset.forName("UTF-8")); // 上传中文文件名乱码问题. 文件名放在请求header里面.
+            builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
+            
+            builder.addTextBody("type", type+"");
             for(File file : files){
             	FileBody fileBody = new FileBody(file);
             	builder.addPart("file", fileBody);

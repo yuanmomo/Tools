@@ -102,11 +102,29 @@ public class StringUtil {
 	 */
 	public static String upperFirstChar(String oldString) {
 		logger.debug("UpperCase the first letter of "+ oldString);
-		if (oldString == null || oldString.equals("debug")) {
+		if (isBlank(oldString)) {
 			return oldString;
 		}
 		String target = new StringBuffer()
 				.append(oldString.substring(0, 1).toUpperCase())
+				.append(oldString.substring(1)).toString();
+		return target;
+	}
+	/**
+	 * lowerFirstChar:  转换字符串的首字母小写. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param   oldString 转换前的字符串
+	 * @return  String   转换后的字段串，首字母大写
+	 * @since JDK 1.6
+	 */
+	public static String lowerFirstChar(String oldString) {
+		logger.debug("LowerCase the first letter of "+ oldString);
+		if (isBlank(oldString)) {
+			return oldString;
+		}
+		String target = new StringBuffer()
+				.append(oldString.substring(0, 1).toLowerCase())
 				.append(oldString.substring(1)).toString();
 		return target;
 	} 

@@ -2,7 +2,7 @@ package net.yuanmomo.tools.util.validate;
 
 import java.util.regex.Pattern;
 
-public class ValidUtil {
+public class ValidateUtil {
 	public static boolean checkCheckcode(String verifyCode) {
 		if (verifyCode == null || verifyCode.length() == 0)
 			return false;

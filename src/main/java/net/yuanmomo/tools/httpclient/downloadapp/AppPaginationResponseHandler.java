@@ -58,7 +58,8 @@ public class AppPaginationResponseHandler implements ResponseHandler<String> {
         		String html = EntityUtils.toString(entity);
         		Document document = Jsoup.parse(html);
         		
-//        		Elements elems = document.select();
+        		Elements elems = document.select("");
+        		System.out.println(elems);
         		return null;
 			} catch (Exception e) {
 				throw new IOException("Format response body failed");

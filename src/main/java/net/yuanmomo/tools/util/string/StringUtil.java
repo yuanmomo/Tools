@@ -24,6 +24,8 @@
 
 package net.yuanmomo.tools.util.string;
 
+import java.util.Random;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -128,4 +130,29 @@ public class StringUtil {
 				.append(oldString.substring(1)).toString();
 		return target;
 	} 
+	
+	/**
+	 *  随机生成一个字符串
+	 * 
+	 * @param Length
+	 * @param Sleep
+	 * @return
+	 */
+	public static String getRandomString(int length) {
+		if(length <= 0){
+			length = 10;
+		}
+		char[] pattern = new char[] { '0', '1', '2', '3', '4', '5', '6', '7',
+				'8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+				'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+				'w', 'x', 'y', 'z' };
+		StringBuilder result = new StringBuilder();
+		int n = pattern.length;
+		Random random = new Random();
+		for (int i = 0; i < length; i++) {
+			int rnd = random.nextInt(n);
+			result.append(pattern[rnd]);
+		}
+		return result.toString();
+	}
 }

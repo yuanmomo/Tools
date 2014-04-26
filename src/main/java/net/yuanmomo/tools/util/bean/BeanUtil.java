@@ -64,4 +64,15 @@ public class BeanUtil implements ApplicationContextAware {
 	public static Object getBean(String name) throws BeansException {
 		return applicationContext.getBean(name);
 	}
+
+	/**
+	 * 获取对象 这里重写了bean方法，起主要作用
+	 * 
+	 * @param class
+	 * @return Object 一个以所给名字注册的bean的实例
+	 * @throws BeansException
+	 */
+	public static <T> T getBean(Class<T> clazz) throws BeansException {
+		return applicationContext.getBean(clazz);
+	}
 }

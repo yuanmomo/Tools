@@ -39,14 +39,13 @@ public class BeanConverterUtil {
 	private static final String filedGetterRegex = "^[a-z][A-Z].*";
 	
 	
-	public BeanConverterUtil(){}
+	public BeanConverterUtil(){
+		notConverteField = new ArrayList<>();
+	}
 	
 	public void addNotConverteField(String field){
 		if(StringUtil.isBlank(field)){
 			return;
-		}
-		if(notConverteField == null){
-			notConverteField = new ArrayList<>();
 		}
 		notConverteField.add(field);
 	}

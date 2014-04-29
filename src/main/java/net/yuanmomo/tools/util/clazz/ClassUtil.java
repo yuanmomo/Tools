@@ -11,6 +11,7 @@
 
 package net.yuanmomo.tools.util.clazz;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.Map;
 import java.util.Set;
 
@@ -61,5 +62,11 @@ public class ClassUtil {
 		ResolverUtil<Class<?>> resolverUtil = new ResolverUtil<Class<?>>();
 	    resolverUtil.find(new ResolverUtil.IsA(Object.class), packageName);
 	    return resolverUtil.getClassesMap();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T> Class<T>  getGnericClass (Object obj){
+		return (Class<T>) ((ParameterizedType) obj.getClass()
+                .getGenericSuperclass()).getActualTypeArguments()[2];
 	}
 }

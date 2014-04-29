@@ -16,9 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 import net.yuanmomo.tools.util.clazz.ClassUtil;
+import net.yuanmomo.tools.util.clazz.MethodUtil;
 import net.yuanmomo.tools.util.collention.CollectionUtil;
 import net.yuanmomo.tools.util.string.StringUtil;
 
@@ -35,9 +35,6 @@ import net.yuanmomo.tools.util.string.StringUtil;
  */
 public class BeanConverterUtil {
 	private List<String> notConverteField = null;
-	
-	private static final String filedGetterRegex = "^[a-z][A-Z].*";
-	
 	
 	public BeanConverterUtil(){
 		notConverteField = new ArrayList<>();
@@ -107,7 +104,7 @@ public class BeanConverterUtil {
 		String targetClassName = target.getSimpleName();
 		
 		// 生成的方法内的变量名
-		String oldObjectName = lowerFirstChar(sourceClassName);
+		String oldObjectName = StringUtil.lowerFirstChar(sourceClassName);
 		String newObjectName = " new"+targetClassName;
 		
 		sb.append(" public static " ).append(targetPackageClassName).append(" get").append(methodType).append(targetClassName)
@@ -138,32 +135,16 @@ public class BeanConverterUtil {
 				}
 			}
 			if(isSourceFieldExist){ // 源类中存在该属性
-				// 对于属性 rId, 这个时候的setter= setrId, getter = getrId, 也就是说当属性的第一个字母小写, 第二个字母大写,
-				// 这个时候,setter和getter不能将首字母大写
-				if(!Pattern.matches(filedGetterRegex, targetFieldName)){
-					targetFieldName = upFirstChar(targetFieldName);
-				}
+				targetFieldName = MethodUtil.getSetter(targetFieldName);
+				sourceFieldName = MethodUtil.getGetter(sourceFieldName);
 				
-				if(!Pattern.matches(filedGetterRegex, sourceFieldName)){
-					sourceFieldName = upFirstChar(sourceFieldName);
-				}
-				sb.append(newObjectName).append(".set").append(targetFieldName)
-				.append("(").append(oldObjectName).append(".get").append(sourceFieldName).append("()")
+				sb.append(newObjectName).append(".").append(targetFieldName)
+				.append("(").append(oldObjectName).append(".").append(sourceFieldName).append("()")
 				.append(");\n");
 			}
 		}
 		
 		sb.append("return ").append(newObjectName).append(";\n");
 		sb.append("}\n");
-	}
-	
-	private static String lowerFirstChar(String str){
-		String first = str.substring(0, 1);
-		return first.toLowerCase()+str.substring(1);
-	}
-	
-	private static String upFirstChar(String str){
-		String first = str.substring(0, 1);
-		return first.toUpperCase()+str.substring(1);
 	}
 }

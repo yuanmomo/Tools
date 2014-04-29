@@ -46,7 +46,7 @@ public class CollectionUtil {
 	 * @since JDK 1.6
 	 */
 	public static boolean isNull(Collection<?> con){
-		if(con == null || con.size() == 0){
+		if(con == null || con.isEmpty()){
 			return true;
 		}
 		return false;
@@ -98,7 +98,7 @@ public class CollectionUtil {
 	 * @since JDK 1.6
 	 */
 	public static boolean isNull(Map<?,?> map){
-		if(map == null || map.size() == 0){
+		if(map == null || map.isEmpty()){
 			return true;
 		}
 		return false;

@@ -13,10 +13,8 @@ package net.yuanmomo.tools.mem;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import net.yuanmomo.tools.util.clazz.ClassUtil;
@@ -61,7 +59,7 @@ public abstract class AbstractMemCache<K1,K2,T> implements IMemCache<K1,K2,T> {
 	/**
 	 *  将数据按照指定的类型分组存放.
 	 */
-	protected Map<K2,Set<T>> dataCategoryMap = null;
+	protected Map<K2,Map<K1,T>> dataCategoryMap = null;
 
 	/**
 	 *  当前泛型类中的作为分类存放的map.key的属性的getter方法.
@@ -102,18 +100,21 @@ public abstract class AbstractMemCache<K1,K2,T> implements IMemCache<K1,K2,T> {
 		// 数据库加载数据不为空，存放到内存
 		this.dataMap = new ConcurrentHashMap<K1,T>();
 		if(this.k2GetterMethod != null){ // 判断是否需要分类存放数据
-			this.dataCategoryMap = new ConcurrentHashMap<K2,Set<T>>();
+			this.dataCategoryMap = new ConcurrentHashMap<K2,Map<K1,T>>();
 		}
 		for(T t : list){	// 循环处理加载的数据
 			this.add(t);
 		}
 		this.afterInit(); // 调用初始化成功后的回调函数
+		this.isLoaded = true;
 		return true;
 	}
 	@Override
 	public void beforeInit() {}
 	@Override
-	public void afterInit() {}
+	public void afterInit() {
+		
+	}
 	
 	@Override
 	public boolean refresh() throws Exception {
@@ -153,12 +154,12 @@ public abstract class AbstractMemCache<K1,K2,T> implements IMemCache<K1,K2,T> {
 			this.dataMap.put(k1, t);
 			if(this.k2GetterMethod != null){
 				K2 k2 =(K2) this.k2GetterMethod.invoke(t);
-				Set<T> typeList = this.dataCategoryMap.get(k2); // 获取当前类型的存放列表
+				Map<K1,T> typeList = this.dataCategoryMap.get(k2); // 获取当前类型的存放列表
 				if(typeList == null){ // 初始化同类型列表
-					typeList = new HashSet<T>();
+					typeList = new ConcurrentHashMap<K1,T>();
 					dataCategoryMap.put(k2, typeList);
 				}
-				typeList.add(t);
+				typeList.put(k1, t);
 			}
 		}
 		return false;
@@ -172,7 +173,7 @@ public abstract class AbstractMemCache<K1,K2,T> implements IMemCache<K1,K2,T> {
 			this.dataMap.remove(k1);
 			if(this.k2GetterMethod != null){
 				K2 k2 =(K2) this.k2GetterMethod.invoke(t);
-				Set<T> typeList = this.dataCategoryMap.get(k2);
+				Map<K1,T> typeList = this.dataCategoryMap.get(k2);
 				if(typeList != null){
 					typeList.remove(k1); // 删除
 				}
@@ -184,7 +185,6 @@ public abstract class AbstractMemCache<K1,K2,T> implements IMemCache<K1,K2,T> {
 	@Override
 	public boolean update(T t) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		if(t != null){
-			this.delete(t); 		// 删除内存中的数据
 			return this.add(t);		// 刷新到内存
 		}
 		return false;
@@ -198,7 +198,7 @@ public abstract class AbstractMemCache<K1,K2,T> implements IMemCache<K1,K2,T> {
 		return null;
 	}
 	
-	public Set<T> selectTypeList(K2 key)  throws Exception{
+	public Map<K1,T> selectTypeList(K2 key)  throws Exception{
 		if(this.isLoaded){ // 内存已经加载过了，从内存获取
 			return this.dataCategoryMap.get(key);
 		}

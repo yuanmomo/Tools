@@ -228,4 +228,60 @@ public class CollectionUtil {
 		}
 		return new ArrayList<String>();
 	}
+	
+	
+	@SuppressWarnings({"rawtypes"})
+	public static void print(Collection coll){
+		if(isNotNull(coll)){
+			System.out.println("********************************************");
+			for(Object t : coll){
+				if(t instanceof Collection){
+					print((Collection)t);
+				}else{
+					System.out.println(t);
+				}
+			}
+			return ;
+		}
+	}
+	@SuppressWarnings("rawtypes")
+	public static  void print(Map map){
+		if(isNotNull(map)){
+			System.out.println("********************************************");
+			for(Object key : map.keySet()){
+				Object value = map.get(key);
+				if(value instanceof Collection){
+					print((Map)value);
+				}else{
+					System.out.println("Key=" + key+"; Value=" + value);
+				}
+			}
+			return;
+		}
+	}
+	
+	/**
+	 *  将map的key转换为一个list返回. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param map
+	 */
+	public static <K,V> List<K> keyToList(Map<K,V> map){
+		if(isNotNull(map)){
+			return new ArrayList<K>(map.keySet());
+		}
+		return null;
+	}
+	/**
+	 *  将map的value转换为一个list返回. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param map
+	 */
+	public static <K,V> List<V> valueToList(Map<K,V> map){
+		if(isNotNull(map)){
+			return new ArrayList<V>(map.values());
+		}
+		return null;
+	}
 }

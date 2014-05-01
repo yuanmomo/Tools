@@ -13,6 +13,7 @@ package net.yuanmomo.tools.mem;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -197,11 +198,34 @@ public abstract class AbstractMemCache<K1,K2,T> implements IMemCache<K1,K2,T> {
 		}
 		return null;
 	}
-	
+	@Override
 	public Map<K1,T> selectTypeList(K2 key)  throws Exception{
 		if(this.isLoaded){ // 内存已经加载过了，从内存获取
 			return this.dataCategoryMap.get(key);
 		}
 		return null;
+	}
+	@Override
+	public Map<K1,T> selectTypeList(List<K2> keys)  throws Exception{
+		if(CollectionUtil.isNull(keys)){
+			return null;
+		}
+		if(this.isLoaded){ // 内存已经加载过了，从内存获取
+			Map<K1,T> result = new HashMap<K1,T>();
+			for(K2 key : keys){
+				result.putAll(this.dataCategoryMap.get(key));
+			}
+			return result;
+		}
+		return null;
+	}
+	public boolean isLoaded() {
+		return isLoaded;
+	}
+	public Map<K1, T> getDataMap() {
+		return dataMap;
+	}
+	public Map<K2, Map<K1, T>> getDataCategoryMap() {
+		return dataCategoryMap;
 	}
 }

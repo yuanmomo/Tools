@@ -13,6 +13,7 @@ package net.yuanmomo.tools.mem;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * ClassName : IMemCache 
@@ -130,4 +131,23 @@ public interface IMemCache<K1,K2,T> {
 	 * @return
 	 */
 	public T get(K1 key) throws Exception;
+	
+	/**
+	 *  批量取得记录. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param key
+	 * @return
+	 * @throws Exception
+	 */
+	public Map<K1,T> selectTypeList(K2 key)  throws Exception;
+	/**
+	 *  批量取得记录. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param key
+	 * @return
+	 * @throws Exception
+	 */
+	public Map<K1,T> selectTypeList(List<K2> keys)  throws Exception;
 }

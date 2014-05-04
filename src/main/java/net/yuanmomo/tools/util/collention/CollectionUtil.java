@@ -17,6 +17,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 import net.yuanmomo.tools.util.string.StringUtil;
 
@@ -281,6 +283,18 @@ public class CollectionUtil {
 	public static <K,V> List<V> valueToList(Map<K,V> map){
 		if(isNotNull(map)){
 			return new ArrayList<V>(map.values());
+		}
+		return null;
+	}
+	/**
+	 *  将map的value转换为一个TreeMap返回. <br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param map
+	 */
+	public static <K,V> Set<V> valueToTreeSet(Map<K,V> map){
+		if(isNotNull(map)){
+			return new TreeSet<V>(map.values());
 		}
 		return null;
 	}

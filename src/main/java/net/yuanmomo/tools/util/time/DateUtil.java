@@ -40,6 +40,7 @@ import java.util.Date;
  * @see 	 
  */
 public class DateUtil {
+	public static long millisecondsOfOneDay = 24 * 3600 * 1000L;
 	
 	/**
 	 * dateToString: 将指定的Date对象转换为字符串. <br/>
@@ -174,12 +175,7 @@ public class DateUtil {
 	 * @since JDK 1.6
 	 */
 	public static Date getDate(){
-		Calendar c = Calendar.getInstance();
-		c.set(Calendar.HOUR_OF_DAY, 0);
-		c.set(Calendar.MINUTE, 0);
-		c.set(Calendar.SECOND, 0);
-		c.set(Calendar.MILLISECOND, 0);
-		return c.getTime();
+		return getDate(new Date());
 	}
 	
 	/**
@@ -226,4 +222,77 @@ public class DateUtil {
 		}
 		return null;
 	}
+	/**
+	 * 判断指定时间是否当天
+	 * @param time
+	 * @return
+	 */
+	public static boolean isCurrentDay(Date date){
+		Calendar cal=Calendar.getInstance();
+		cal.setTime(date);
+		Calendar current=Calendar.getInstance();
+		return current.get(Calendar.YEAR)==cal.get(Calendar.YEAR)&&current.get(Calendar.MONTH)==cal.get(Calendar.MONTH)&&current.get(Calendar.DAY_OF_MONTH)==cal.get(Calendar.DAY_OF_MONTH);
+	}
+	
+	/**
+	 * 判断当前是否在指定时间之后，按自然日计算
+	 * @param time
+	 * @return
+	 */
+	public static boolean currentAfterDay(Date date){
+		Calendar cal=Calendar.getInstance();
+		cal.setTime(date);
+		cal.set(Calendar.HOUR_OF_DAY, 0);
+		cal.set(Calendar.MINUTE, 0);
+		cal.set(Calendar.SECOND, 0);
+		cal.set(Calendar.MILLISECOND, 0);
+		Calendar current=Calendar.getInstance();
+		current.set(Calendar.HOUR_OF_DAY, 0);
+		current.set(Calendar.MINUTE, 0);
+		current.set(Calendar.SECOND, 0);
+		current.set(Calendar.MILLISECOND, 0);
+		return current.after(cal);
+	}
+	
+	/**
+	 * 判断当前是否在指定时间之后1天，按自然日计算
+	 * @param time
+	 * @return
+	 */
+	public static boolean currentAfterDay1(Date date){
+		Calendar cal=Calendar.getInstance();
+		cal.setTime(date);
+		cal.set(Calendar.HOUR_OF_DAY, 0);
+		cal.set(Calendar.MINUTE, 0);
+		cal.set(Calendar.SECOND, 0);
+		cal.set(Calendar.MILLISECOND, 0);
+		cal.add(Calendar.DAY_OF_MONTH, 1);
+		Calendar current=Calendar.getInstance();
+		current.set(Calendar.HOUR_OF_DAY, 0);
+		current.set(Calendar.MINUTE, 0);
+		current.set(Calendar.SECOND, 0);
+		current.set(Calendar.MILLISECOND, 0);
+		return current.equals(cal);
+	}
+	
+	public static boolean isSameDay(Date date1,Date date2){
+		Calendar cal1 = getCalendar(getDate(date1));
+		Calendar cal2 = getCalendar(getDate(date2));
+		if(cal1 == null && cal2 == null){
+			return true;
+		}
+		if(cal1 != null && cal1.compareTo(cal2) == 0){
+			return true;
+		}
+		return false;
+	}
+	
+	public static long getRestMicrosecondsOfDay(Date date){
+		Date currentDate = getDate(date);
+		return millisecondsOfOneDay - (date.getTime() - currentDate.getTime());
+	}
+	public static long getRestMicrosecondsOfDay(){
+		return getRestMicrosecondsOfDay(new Date());
+	}
+	
 }

@@ -130,6 +130,17 @@
 			<artifactId>commons-beanutils</artifactId>
 			<version>1.9.1</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>jaxen</groupId>
+			<artifactId>jaxen</artifactId>
+			<version>full</version>
+		</dependency>
 	</dependencies>
 
 	<build>

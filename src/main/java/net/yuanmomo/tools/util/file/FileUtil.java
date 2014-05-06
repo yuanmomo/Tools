@@ -32,6 +32,24 @@ import net.yuanmomo.tools.util.string.StringUtil;
  * @see 	 
  */
 public class FileUtil {
+	
+	/**
+	 *	判断指定的文件是否存在<br/>
+	 *
+	 * @author Hongbin Yuan
+	 * @param filePath
+	 * @return
+	 *		
+	 *		
+	 */
+	public File isFileExists(String filePath){
+		File f = new File(filePath);
+		if(f.exists()){
+			return f;
+		}
+		return null;
+	}
+	
 	/**
 	 * getNameWithoutExtend: 取得文件的名称，不含扩展名. <br/>
 	 *

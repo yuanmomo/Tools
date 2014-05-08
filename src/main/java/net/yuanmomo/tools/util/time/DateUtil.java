@@ -287,6 +287,10 @@ public class DateUtil {
 		return false;
 	}
 	
+	public static long getMicrosecondsOfDays(int days){
+		return millisecondsOfOneDay * days;
+	}
+	
 	public static long getRestMicrosecondsOfDay(Date date){
 		Date currentDate = getDate(date);
 		return millisecondsOfOneDay - (date.getTime() - currentDate.getTime());

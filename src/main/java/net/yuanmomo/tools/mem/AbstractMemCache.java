@@ -213,7 +213,9 @@ public abstract class AbstractMemCache<K1,K2,T> implements IMemCache<K1,K2,T> {
 		if(this.isLoaded){ // 内存已经加载过了，从内存获取
 			Map<K1,T> result = new HashMap<K1,T>();
 			for(K2 key : keys){
-				result.putAll(this.dataCategoryMap.get(key));
+				if(CollectionUtil.isNotNull(this.dataCategoryMap.get(key))){
+					result.putAll(this.dataCategoryMap.get(key));
+				}
 			}
 			return result;
 		}

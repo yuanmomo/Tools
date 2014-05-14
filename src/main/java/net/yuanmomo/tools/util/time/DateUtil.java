@@ -40,7 +40,7 @@ import java.util.Date;
  * @see 	 
  */
 public class DateUtil {
-	public static long millisecondsOfOneDay = 24 * 3600 * 1000L;
+	public static final long millisecondsOfOneDay = 24 * 3600 * 1000;
 	
 	/**
 	 * dateToString: 将指定的Date对象转换为字符串. <br/>

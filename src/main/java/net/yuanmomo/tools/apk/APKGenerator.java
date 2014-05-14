@@ -36,11 +36,11 @@ public class APKGenerator {
 	 * generator: 运行脚本默认放在WEB-INF目录下面 xxx.sh. <br/>
 	 *			生成的新APK文件:  + userId + postFix
 	 * @author Hongbin Yuan
-	 * @param shPath			生成APK文件脚本的路径			
+	 * @param shPath			生成APK文件脚本的路径	
+	 * @param originalAPKPath	原始的APK文件绝对		
 	 * @param invitePath		invite文件生成的根目录				
-	 * @param originalAPKPath	原始的APK文件绝对
 	 * @param userId			邀请用户id
-	 * @param 					生成的新APK文件前缀
+	 * @param prefix			生成的新APK文件前缀
 	 * @param postFix			生成的新APK文件后缀,不能含.apk扩展名
 	 * @return
 	 * @throws Exception 
@@ -52,8 +52,8 @@ public class APKGenerator {
 		File isGenerated = new File(invitePath + File.separator +"generated" +File.separator
 				+userId + File.separator +  + userId + prefix + ".apk");
 		if(isGenerated.exists()){ // 判断文件是否已经生成
-			if(logger.isDebugEnabled()){
-				logger.debug("已经生成了;userId = "+userId);
+			if(logger.isInfoEnabled()){
+				logger.info("已经生成了;userId = "+userId);
 			}
 			return true;
 		}
@@ -88,8 +88,8 @@ public class APKGenerator {
 		StringBuilder sb = new StringBuilder();
 		sb.append(shPath).append(" ").append(originalAPKPath).append(" ").append(invitePath);
 		sb.append(" ").append(userId).append(" ").append(prefix).append(" ").append(postfix);
-		if(logger.isDebugEnabled()){
-			logger.debug("执行脚本命令;command=" + sb.toString());
+		if(logger.isInfoEnabled()){
+			logger.info("执行脚本命令;command=" + sb.toString());
 		}
 		
 		try {
@@ -98,13 +98,13 @@ public class APKGenerator {
 			if(exitCode == 0){// 脚本执行成功
 				return true;
 			}
-			if(logger.isDebugEnabled()){
-				logger.debug("生成该用户对应的邀请apk包错误;userId ="+userId+";code="+exitCode);
+			if(logger.isErrorEnabled()){
+				logger.error("生成该用户对应的邀请apk包错误;userId ="+userId+";code="+exitCode);
 			}
 		} catch (Exception e) {
 			// 生成该用户对应的邀请apk包出现异常
-			if(logger.isDebugEnabled()){
-				logger.debug("生成该用户对应的邀请apk包出现异常;userId ="+userId,e);
+			if(logger.isErrorEnabled()){
+				logger.error("生成该用户对应的邀请apk包出现异常;userId ="+userId,e);
 			}
 			throw e;
 		}

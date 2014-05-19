@@ -141,5 +141,9 @@ public class MD5 {
 		s = new String(str); // 换后的结果转换为字符串
 		return s;
 	}
+	
+	public static void main(String[] args) {
+		System.out.println(MD5.getMD5("Esrev1moc"));
+	}
 }
 

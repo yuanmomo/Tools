@@ -294,7 +294,13 @@ public class CollectionUtil {
 	 */
 	public static <K,V> Set<V> valueToTreeSet(Map<K,V> map){
 		if(isNotNull(map)){
-			return new TreeSet<V>(map.values());
+			Set<V> set = new TreeSet<>();
+			for(V v : map.values()){
+				System.out.println(v.hashCode());
+				System.out.println(set.contains(v));
+				set.add(v);
+			}
+			return set;
 		}
 		return null;
 	}

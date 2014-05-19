@@ -21,6 +21,7 @@
 package net.yuanmomo.tools.util.bean;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
@@ -74,5 +75,11 @@ public class BeanUtil implements ApplicationContextAware {
 	 */
 	public static <T> T getBean(Class<T> clazz) throws BeansException {
 		return applicationContext.getBean(clazz);
+	}
+	
+	public static <T> void register(Class<T> clazz, Object bean) {
+		DefaultListableBeanFactory fty = (DefaultListableBeanFactory) applicationContext
+				.getAutowireCapableBeanFactory();
+		fty.registerResolvableDependency(clazz, bean);
 	}
 }

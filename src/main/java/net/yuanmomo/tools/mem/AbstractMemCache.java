@@ -50,7 +50,7 @@ public abstract class AbstractMemCache<K1,K2,T> implements IMemCache<K1,K2,T> {
 	/**
 	 *  存储数据的map.
 	 */
-	protected Map<K1,T> dataMap = null;
+	protected Map<K1,T> dataMap = new ConcurrentHashMap<K1,T>();
 	
 	/**
 	 *  当前泛型类中的作为map.key的属性的getter方法.
@@ -60,7 +60,7 @@ public abstract class AbstractMemCache<K1,K2,T> implements IMemCache<K1,K2,T> {
 	/**
 	 *  将数据按照指定的类型分组存放.
 	 */
-	protected Map<K2,Map<K1,T>> dataCategoryMap = null;
+	protected Map<K2,Map<K1,T>> dataCategoryMap = new ConcurrentHashMap<K2,Map<K1,T>>();
 
 	/**
 	 *  当前泛型类中的作为分类存放的map.key的属性的getter方法.
@@ -94,17 +94,11 @@ public abstract class AbstractMemCache<K1,K2,T> implements IMemCache<K1,K2,T> {
 			return false;
 		}
 		List<T> list = this.load(); // 从数据库加载数据
-		if(CollectionUtil.isNull(list)){
-			return true;
-		}
-		
-		// 数据库加载数据不为空，存放到内存
-		this.dataMap = new ConcurrentHashMap<K1,T>();
-		if(this.k2GetterMethod != null){ // 判断是否需要分类存放数据
-			this.dataCategoryMap = new ConcurrentHashMap<K2,Map<K1,T>>();
-		}
-		for(T t : list){	// 循环处理加载的数据
-			this.add(t);
+		if(CollectionUtil.isNotNull(list)){
+			// 数据库加载数据不为空，存放到内存
+			for(T t : list){	// 循环处理加载的数据
+				this.add(t);
+			}
 		}
 		this.afterInit(); // 调用初始化成功后的回调函数
 		this.isLoaded = true;
@@ -124,9 +118,9 @@ public abstract class AbstractMemCache<K1,K2,T> implements IMemCache<K1,K2,T> {
 		// 设置数据未被加载
 		this.isLoaded = false;
 		// 清空存放数据的map
-		this.dataMap = null;	
-		this.dataCategoryMap = null;
-		// 从数据库重新加载渠道数据
+		this.dataMap = new ConcurrentHashMap<K1,T>();	
+		this.dataCategoryMap = new ConcurrentHashMap<K2,Map<K1,T>>();
+		// 从数据库重新加载数据
 		boolean flag = this.init();						
 		// 刷新后的自定义操作
 		this.afterRefresh();				
@@ -163,7 +157,7 @@ public abstract class AbstractMemCache<K1,K2,T> implements IMemCache<K1,K2,T> {
 				typeList.put(k1, t);
 			}
 		}
-		return false;
+		return true;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -179,16 +173,15 @@ public abstract class AbstractMemCache<K1,K2,T> implements IMemCache<K1,K2,T> {
 					typeList.remove(k1); // 删除
 				}
 			}
-			return true;
 		}
-		return false;
+		return true;
 	}
 	@Override
 	public boolean update(T t) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		if(t != null){
-			return this.add(t);		// 刷新到内存
+			this.add(t);		// 刷新到内存
 		}
-		return false;
+		return true;
 	}
 	
 	@Override

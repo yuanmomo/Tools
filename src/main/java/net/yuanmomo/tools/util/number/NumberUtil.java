@@ -25,14 +25,14 @@ import java.math.BigDecimal;
  * @see 	 
  */
 public class NumberUtil {
-	public static Float round(Double dou, Integer length) {
+	public static Double round(Double dou, Integer length) {
 		if (dou == null)
 			return null;
 		if (length == null){
 			length = 2;
 		}
 		BigDecimal b = new BigDecimal(dou);
-		float f1 = b.setScale(length, BigDecimal.ROUND_HALF_UP).floatValue();
+		Double f1 = b.setScale(length, BigDecimal.ROUND_HALF_UP).doubleValue();
 		return f1;
 	}
 	

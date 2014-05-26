@@ -108,7 +108,7 @@ public class APKGenerator {
 			}
 			throw e;
 		}
-		throw new Exception("文件生成失败");
+		return false;
 	}
 	public static void main(String[] args) {
 		try {

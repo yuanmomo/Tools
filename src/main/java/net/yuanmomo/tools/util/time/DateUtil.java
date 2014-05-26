@@ -175,7 +175,7 @@ public class DateUtil {
 	 * @since JDK 1.6
 	 */
 	public static Date getDate(){
-		return getDate(new Date());
+		return getCurrentDate();
 	}
 	
 	/**

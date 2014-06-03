@@ -276,6 +276,13 @@ public class DateUtil {
 	}
 	
 	public static boolean isSameDay(Date date1,Date date2){
+		if(date1 == null && date2 == null ){
+			return true;
+		}
+		if(date1 == null || date2 == null ){
+			return false;
+		}
+		
 		Calendar cal1 = getCalendar(getDate(date1));
 		Calendar cal2 = getCalendar(getDate(date2));
 		if(cal1 == null && cal2 == null){

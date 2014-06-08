@@ -14,6 +14,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -303,5 +304,17 @@ public class CollectionUtil {
 			return set;
 		}
 		return null;
+	}
+	
+	public static <K,V> List<V> selectRandom(Map<K,V> map,int size){
+		if(isNull(map)){
+			return null;
+		}
+		List<V> values = valueToList(map);
+		if(values.size() <= size){
+			return new ArrayList<V>(values);
+		}
+		Collections.shuffle(values);
+		return values.subList(0, size);
 	}
 }

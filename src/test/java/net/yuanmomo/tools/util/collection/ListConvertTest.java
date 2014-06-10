@@ -11,7 +11,9 @@
 package net.yuanmomo.tools.util.collection;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import net.yuanmomo.tools.util.collention.CollectionUtil;
 
@@ -43,5 +45,15 @@ public class ListConvertTest {
 			System.out.println(i);
 		}
 	}
-
+	@Test
+	public void testSelectRandom() {
+		Map<String,String> map = new HashMap<String,String>();
+		for(int i=0;i < 30 ;i ++){
+			map.put(i+"",i+"");
+		}
+		for(int i=0;i<5;i++){
+			List<String> res = CollectionUtil.selectRandom(map, 5);
+			CollectionUtil.print(res);
+		}
+	}
 }

@@ -306,4 +306,23 @@ public class DateUtil {
 		return getRestMicrosecondsOfDay(new Date());
 	}
 	
+	public static boolean isBetween(Date time, Date start, Date end){
+		if(time == null){
+			return true;
+		}
+		if(start == null || end == null){
+			throw new NullPointerException("start date or end date is null. startDate = "+start +", endDate = "+end);
+		}
+		long timeLong = time.getTime();
+		long startLong = start.getTime();
+		long endLong = end.getTime();
+		
+		if(timeLong >  startLong && timeLong < endLong){
+			return true;
+		}
+		return false;
+	}
+	public static boolean isBetween(Date start, Date end){
+		return isBetween(new Date(),start, end);
+	}
 }

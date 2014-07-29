@@ -14,6 +14,8 @@ package net.yuanmomo.tools.db.orm.mybatis;
 import java.util.List;
 
 import org.apache.ibatis.exceptions.TooManyResultsException;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * ClassName : MyBatisUtil 

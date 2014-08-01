@@ -28,7 +28,7 @@ import org.junit.Test;
  */
 public class MD5Test {
 	@Test
-	public void test(){
+	public void test() throws Exception{
 		System.out.println(MD5.getMD5(StringUtil.getRandomString(10)));
 		System.out.println(MD5.getMD5(StringUtil.getRandomString(10)));
 		System.out.println(MD5.getMD5(StringUtil.getRandomString(10)));

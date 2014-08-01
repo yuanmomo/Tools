@@ -47,7 +47,7 @@ public class MD5Test {
 	private static Logger logger = LoggerFactory.getLogger(MD5Test.class);
 	
 	@Test
-	public void testMD5(){
+	public void testMD5() throws Exception{
 		logger.debug("Start to test MD5Test.testMD5()....................");
 		int totalRunTime=10;//一共运行多少次
 		//生成的字符串最少的长度

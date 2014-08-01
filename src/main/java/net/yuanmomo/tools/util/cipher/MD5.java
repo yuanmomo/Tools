@@ -31,72 +31,89 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * ClassName : MD5 
- * Function  : 计算执行的字符串的MD5值
- * Reason    : 加密密码 
- * Date      : Jun 24, 2013 5:29:08 PM 
- *
- * @author   : MoMo
- * @version  
- * @since      JDK 1.6
- * @see 	 
+ * ClassName : MD5 Function : 计算执行的字符串的MD5值 Reason : 加密密码 Date : Jun 24, 2013
+ * 5:29:08 PM
+ * 
+ * @author : MoMo
+ * @version
+ * @since JDK 1.6
+ * @see
  */
 public class MD5 {
-	
+
 	private static char hexDigits[] = { // 用来将字节转换成 16 进制表示的字符
-        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+	'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e',
+			'f'};
 	private static MessageDigest md = null;
-	static{
+	private static MessageDigest sha256 = null;
+	static {
 		try {
 			md = MessageDigest.getInstance("MD5");
+			sha256 = MessageDigest.getInstance("SHA-256");
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
 	}
-    /**
-     * getMD5: . <br/>
-     * 
-     *
-     * @author Hongbin Yuan
-     * @param source
-     * @return
-     * @since JDK 1.6
-     */
-    public static String getMD5(byte[] source) {
-        try {
-            md.update(source);
-            byte tmp[] = md.digest();          // MD5 的计算结果是一个 128 位的长整数，
-            return byteToHexString(tmp);
-        } catch (Exception e) {
-        	throw e;
-        }
-    }
-    
-    
-    /**
-     * getMD5: . <br/>
-     * 
-     *
-     * @author Hongbin Yuan
-     * @param param
-     * @return
-     * @since JDK 1.6
-     */
-    public static String getMD5(String param) {
-    	byte[] source=param.getBytes();
-    	return getMD5(source);
-    }
-    
+	/**
+	 * getMD5: . <br/>
+	 * 
+	 * 
+	 * @author Hongbin Yuan
+	 * @param source
+	 * @return
+	 * @throws Exception
+	 * @since JDK 1.6
+	 */
+	public static String getMD5(byte[] source) throws Exception {
+		try {
+			md.update(source);
+			byte tmp[] = md.digest(); // MD5 的计算结果是一个 128 位的长整数，
+			return byteToHexString(tmp);
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	public static String getSHA256(byte[] source) throws Exception {
+		try {
+			sha256.update(source);
+			byte tmp[] = sha256.digest();
+			return byteToHexString(tmp);
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	/**
+	 * getMD5: . <br/>
+	 * 
+	 * 
+	 * @author Hongbin Yuan
+	 * @param param
+	 * @return
+	 * @throws Exception
+	 * @since JDK 1.6
+	 */
+	public static String getMD5(String param) throws Exception {
+		byte[] source = param.getBytes();
+		return getMD5(source);
+	}
+
+	public static String getSHA256(String param) throws Exception {
+		byte[] source = param.getBytes();
+		return getSHA256(source);
+	}
+
 	/**
 	 * getMD5: 文件MD5加密. <br/>
-	 *
+	 * 
 	 * @author Hongbin Yuan
 	 * @param file
 	 * @return
-	 * @throws IOException
+	 * @throws Exception
 	 * @since JDK 1.6
 	 */
-	public static String getMD5(File file) throws IOException {
+	public static String getMD5(File file) throws Exception {
 		FileInputStream fis = null;
 		try {
 			fis = new FileInputStream(file);
@@ -117,7 +134,7 @@ public class MD5 {
 			}
 		}
 	}
-	
+
 	/**
 	 * 把byte[]数组转换成十六进制字符串表示形式
 	 * 
@@ -125,13 +142,13 @@ public class MD5 {
 	 *            要转换的byte[]
 	 * @return 十六进制字符串表示形式
 	 */
-	private static String byteToHexString(byte[] tmp) {
+	public static String byteToHexString(byte[] tmp) {
 		String s;
 		// 用字节表示就是 16 个字节
-		char str[] = new char[16 * 2]; // 每个字节用 16 进制表示的话，使用两个字符，
+		char str[] = new char[tmp.length * 2]; // 每个字节用 16 进制表示的话，使用两个字符，
 		// 所以表示成 16 进制需要 32 个字符
 		int k = 0; // 表示转换结果中对应的字符位置
-		for (int i = 0; i < 16; i++) { // 从第一个字节开始，对 MD5 的每一个字节
+		for (int i = 0; i < tmp.length; i++) { // 从第一个字节开始，对 MD5 的每一个字节
 			// 转换成 16 进制字符的转换
 			byte byte0 = tmp[i]; // 取第 i 个字节
 			str[k++] = hexDigits[byte0 >>> 4 & 0xf]; // 取字节中高 4 位的数字转换,
@@ -141,9 +158,7 @@ public class MD5 {
 		s = new String(str); // 换后的结果转换为字符串
 		return s;
 	}
-	
+
 	public static void main(String[] args) {
-		System.out.println(MD5.getMD5("Esrev1moc"));
 	}
 }
-

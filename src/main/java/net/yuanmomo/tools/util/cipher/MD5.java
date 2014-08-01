@@ -44,16 +44,6 @@ public class MD5 {
 	private static char hexDigits[] = { // 用来将字节转换成 16 进制表示的字符
 	'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e',
 			'f'};
-	private static MessageDigest md = null;
-	private static MessageDigest sha256 = null;
-	static {
-		try {
-			md = MessageDigest.getInstance("MD5");
-			sha256 = MessageDigest.getInstance("SHA-256");
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-	}
 	/**
 	 * getMD5: . <br/>
 	 * 
@@ -65,21 +55,25 @@ public class MD5 {
 	 * @since JDK 1.6
 	 */
 	public static String getMD5(byte[] source) throws Exception {
+		MessageDigest md = null;
 		try {
+			md = MessageDigest.getInstance("MD5");
 			md.update(source);
 			byte tmp[] = md.digest(); // MD5 的计算结果是一个 128 位的长整数，
 			return byteToHexString(tmp);
-		} catch (Exception e) {
+		} catch (NoSuchAlgorithmException e) {
 			throw e;
 		}
 	}
 
 	public static String getSHA256(byte[] source) throws Exception {
+		MessageDigest sha256 = null;
 		try {
+			sha256 = MessageDigest.getInstance("SHA-256");
 			sha256.update(source);
 			byte tmp[] = sha256.digest();
 			return byteToHexString(tmp);
-		} catch (Exception e) {
+		} catch (NoSuchAlgorithmException e) {
 			throw e;
 		}
 	}
@@ -115,7 +109,9 @@ public class MD5 {
 	 */
 	public static String getMD5(File file) throws Exception {
 		FileInputStream fis = null;
+		MessageDigest md = null;
 		try {
+			md = MessageDigest.getInstance("MD5");
 			fis = new FileInputStream(file);
 			byte[] buffer = new byte[2048];
 			int length = -1;

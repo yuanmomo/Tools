@@ -80,6 +80,8 @@ public class CollectionUtil {
 	public static boolean isNotNull(Object[] array){
 		return !isNull(array);
 	}
+	
+	
 	/**
 	 * isNotNull:  判断指定的集合不为空. <br/>
 	 *

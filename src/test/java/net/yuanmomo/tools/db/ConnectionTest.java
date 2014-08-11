@@ -25,6 +25,7 @@
 package net.yuanmomo.tools.db;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Map;
 
@@ -56,10 +57,17 @@ public class ConnectionTest {
 		logger.debug("Start to test ConnectionTest.testFetchBoneCPConnection()....................");
 		DataSource ds = new BoneCPDataSource();
 		Connection con = null ;
+		PreparedStatement psmt = null;
 		try {
 			Map<String,String> params = PropertiesUtil.propertiesToMap("src/main/resources/net/yuanmomo/tools/db/BoneCP.properties");
 			ds.init(params);
 			con = ds.getConnection();
+			
+			String sql = "create database kk";
+			psmt = con.prepareStatement(sql);
+			psmt.executeQuery(sql);
+			psmt.executeUpdate();
+			
 		} catch (SQLException e1) {
 			logger.error(e1.getStackTrace().toString());
 		} catch (Exception e) {
@@ -76,6 +84,7 @@ public class ConnectionTest {
 			logger.error("Error",e);
 		}finally{
 			try {
+				psmt.close();
 				ds.returnConnection(con);
 			} catch (SQLException e) {
 				logger.error("Error",e);

@@ -9,7 +9,7 @@
  * Company      : 成都逗溜网科技有限公司  
  */
 
-package net.yuanmomo.tools.httpclient;
+package net.yuanmomo.tools.httpclient.upload;
 
 import java.io.File;
 import java.io.IOException;

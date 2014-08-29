@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import net.yuanmomo.tools.httpclient.upload.HttpClientFileUpload;
+
 import org.apache.http.client.ClientProtocolException;
 import org.junit.Test;
 

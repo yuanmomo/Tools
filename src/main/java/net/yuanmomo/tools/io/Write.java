@@ -101,7 +101,7 @@ public class Write {
 			while(ite.hasNext()){
 				T temp = ite.next();
 				if(temp != null){
-					pw.println(temp.toString()+"\n");
+					pw.println(temp.toString());
 				}
 			}
 			logger.info("Finish printing the file, "+file.getAbsolutePath());

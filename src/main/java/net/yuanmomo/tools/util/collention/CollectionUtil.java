@@ -272,11 +272,21 @@ public class CollectionUtil {
 	 * @param map
 	 */
 	public static <K,V> List<K> keyToList(Map<K,V> map){
+		return keyToList(map,map.size());
+	}
+	
+	public static <K,V> List<K> keyToList(Map<K,V> map,int count){
 		if(isNotNull(map)){
-			return new ArrayList<K>(map.keySet());
+			if(map.size() <= count){
+				return new ArrayList<K>(map.keySet());
+			}else{
+				List<K> list =  new ArrayList<K>(map.keySet());
+				return list.subList(0, count);
+			}
 		}
 		return null;
 	}
+	
 	/**
 	 *  将map的value转换为一个list返回. <br/>
 	 *

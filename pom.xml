@@ -155,6 +155,11 @@
 			<artifactId>poi-examples</artifactId>
 			<version>3.10-FINAL</version>
 		</dependency>
+		<dependency>
+			<groupId>com.notnoop.apns</groupId>
+			<artifactId>apns</artifactId>
+			<version>1.0.0.Beta4</version>
+		</dependency>
 	</dependencies>
 
 	<build>

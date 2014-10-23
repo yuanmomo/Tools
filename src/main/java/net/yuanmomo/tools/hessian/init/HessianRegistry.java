@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import net.yuanmomo.tools.hessian.anno.Path;
 import net.yuanmomo.tools.util.bean.BeanUtil;
 
 import org.apache.ibatis.io.ResolverUtil;

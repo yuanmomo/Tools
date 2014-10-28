@@ -10,31 +10,38 @@ import net.yuanmomo.tools.json.GsonUtil;
 
 public class GetAddressByIp {
 	public static void main(String[] args) {
-		System.out.println("边边===便便");
-		System.out.println("8.8.8.8 == " + getAddress("8.8.8.8"));
-		System.out.println("61.139.2.69 ==" + getAddress("61.139.2.69"));
-		System.out.println("边边===便便");
+		System.out.println("8.8.8.8 == " + getAddressString("8.8.8.8"));
+		System.out.println("61.139.2.69 ==" + getAddressString("61.139.2.69"));
 	}
 	
-	public static String getAddress(String ip){
-		StringBuilder sb = new StringBuilder();
+	public static String getAddressString(String ip){
 		try {
-			String str = getJsonContent("http://ip.taobao.com/service/getIpInfo.php?ip=" + ip);
-			Address address = GsonUtil.getGson().fromJson(str,Address.class);
-			if ("0".equals(address.getCode())) {
+			StringBuilder sb = new StringBuilder();
+			Address address = getAddress(ip);
+			if(address  != null){
 				Data data = address.getData();
 				sb.append(data.getCountry()).append(data.getRegion()).append(data.getCity()).append(data.getIsp());
-			} else {
-				sb.append("IP地址有误");
 			}
+			return sb.toString();
 		} catch (Exception e) {
-			sb.append("获取IP地址异常：").append(e.getMessage());
-			
+			throw e;
 		}
-		return sb.toString();
 	}
-
-	public static String getJsonContent(String urlStr) {
+	
+	public static Address getAddress(String ip){
+		try {
+			String str = getJsonContent("http://ip.taobao.com/service/getIpInfo.php?ip=" + ip);
+			Address address = null;
+			if(str != null){
+				address = GsonUtil.getGson().fromJson(str,Address.class);
+			}
+			return address;
+		} catch (Exception e) {
+			throw new RuntimeException("获取IP地址异常", e);
+		}
+	}
+	
+	public static String getJsonContent(String urlStr) throws IOException {
 		try {// 获取HttpURLConnection连接对象
 			URL url = new URL(urlStr);
 			HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
@@ -56,11 +63,11 @@ public class GetAddressByIp {
 				// 将内存流转换为字符串
 				return new String(out.toByteArray());
 			}
+			return null;
 		} catch (MalformedURLException e) {
-			
+			throw e;
 		} catch (IOException e) {
-			
+			throw e;
 		}
-		return null;
 	}
 }

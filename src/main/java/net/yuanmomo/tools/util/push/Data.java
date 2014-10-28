@@ -9,11 +9,11 @@ public class Data {
 	private String county;
 	private String isp;
 	private String country_id;
-	private String area_id;
-	private String region_id;
-	private String city_id;
-	private String county_id;
-	private String isp_id;
+	private int area_id;
+	private int region_id;
+	private int city_id;
+	private int county_id;
+	private int isp_id;
 	public String getIp() {
 		return ip;
 	}
@@ -62,43 +62,34 @@ public class Data {
 	public void setCountry_id(String country_id) {
 		this.country_id = country_id;
 	}
-	public String getArea_id() {
+	public int getArea_id() {
 		return area_id;
 	}
-	public void setArea_id(String area_id) {
+	public void setArea_id(int area_id) {
 		this.area_id = area_id;
 	}
-	public String getRegion_id() {
+	public int getRegion_id() {
 		return region_id;
 	}
-	public void setRegion_id(String region_id) {
+	public void setRegion_id(int region_id) {
 		this.region_id = region_id;
 	}
-	public String getCity_id() {
+	public int getCity_id() {
 		return city_id;
 	}
-	public void setCity_id(String city_id) {
+	public void setCity_id(int city_id) {
 		this.city_id = city_id;
 	}
-	public String getCounty_id() {
+	public int getCounty_id() {
 		return county_id;
 	}
-	public void setCounty_id(String county_id) {
+	public void setCounty_id(int county_id) {
 		this.county_id = county_id;
 	}
-	public String getIsp_id() {
+	public int getIsp_id() {
 		return isp_id;
 	}
-	public void setIsp_id(String isp_id) {
+	public void setIsp_id(int isp_id) {
 		this.isp_id = isp_id;
-	}
-	@Override
-	public String toString() {
-		return "Data [ip=" + ip + ", country=" + country + ", area=" + area
-				+ ", region=" + region + ", city=" + city + ", county="
-				+ county + ", isp=" + isp + ", country_id=" + country_id
-				+ ", area_id=" + area_id + ", region_id=" + region_id
-				+ ", city_id=" + city_id + ", county_id=" + county_id
-				+ ", isp_id=" + isp_id + "]";
 	}
 }

@@ -10,10 +10,7 @@ import net.yuanmomo.tools.json.GsonUtil;
 
 public class GetAddressByIp {
 	public static void main(String[] args) {
-		System.out.println("边边===便便");
-		System.out.println("8.8.8.8 == " + getAddress("8.8.8.8"));
 		System.out.println("61.139.2.69 ==" + getAddress("61.139.2.69"));
-		System.out.println("边边===便便");
 	}
 	
 	public static String getAddress(String ip){

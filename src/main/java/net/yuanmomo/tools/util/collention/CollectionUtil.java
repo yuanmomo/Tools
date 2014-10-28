@@ -329,4 +329,37 @@ public class CollectionUtil {
 		Collections.shuffle(values);
 		return values.subList(0, size);
 	}
+	
+	
+	public static <K,V> String getParameterLine (Map<K,V> map){
+		StringBuilder sb = new StringBuilder();
+		if(map != null && map.size() > 0){
+			Set<K> keySet = map.keySet();
+			for(K key : keySet){
+				V value = map.get(key);
+				if(value != null){
+					if(value instanceof String[]){
+						String[] valueArray = (String[])value;
+						for(String strValue : valueArray){
+							if(sb.length() > 0){
+								sb.append("&");
+							}
+							sb.append(key).append("=").append(strValue);
+						}
+					}else{
+						if(sb.length() > 0){
+							sb.append("&");
+						}
+						sb.append(key).append("=").append(value);
+					}
+				}else{
+					if(sb.length() > 0){
+						sb.append("&");
+					}
+					sb.append(key).append("=");
+				}
+			}
+		}
+		return sb.toString();
+	}
 }

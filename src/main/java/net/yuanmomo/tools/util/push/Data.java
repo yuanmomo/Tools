@@ -92,13 +92,4 @@ public class Data {
 	public void setIsp_id(int isp_id) {
 		this.isp_id = isp_id;
 	}
-	@Override
-	public String toString() {
-		return "Data [ip=" + ip + ", country=" + country + ", area=" + area
-				+ ", region=" + region + ", city=" + city + ", county="
-				+ county + ", isp=" + isp + ", country_id=" + country_id
-				+ ", area_id=" + area_id + ", region_id=" + region_id
-				+ ", city_id=" + city_id + ", county_id=" + county_id
-				+ ", isp_id=" + isp_id + "]";
-	}
 }

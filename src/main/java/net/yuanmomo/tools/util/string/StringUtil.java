@@ -80,6 +80,16 @@ public class StringUtil {
 		}
 		return false;
 	}
+	public static boolean isNull(String str){
+		if(str==null){
+			return true;
+		}
+		return false;
+	}
+	public static boolean isNotNull(String str){
+		return !isNull(str);
+	}
+	
 	/**
 	 * isNotBlank: 判断字符串不为空. <br/>
 	 * TODO .<br/>

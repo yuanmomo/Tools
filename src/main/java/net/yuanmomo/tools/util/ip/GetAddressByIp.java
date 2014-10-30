@@ -1,4 +1,4 @@
-package net.yuanmomo.tools.util.push;
+package net.yuanmomo.tools.util.ip;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,8 +10,7 @@ import net.yuanmomo.tools.json.GsonUtil;
 
 public class GetAddressByIp {
 	public static void main(String[] args) {
-		System.out.println("8.8.8.8 == " + getAddressString("8.8.8.8"));
-		System.out.println("61.139.2.69 ==" + getAddressString("61.139.2.69"));
+		System.out.println("61.139.2.69 ==" + getAddress("61.139.2.69"));
 	}
 	
 	public static String getAddressString(String ip){

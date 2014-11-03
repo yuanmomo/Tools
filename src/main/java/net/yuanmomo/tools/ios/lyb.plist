@@ -17,13 +17,13 @@
 			<key>metadata</key>
 			<dict>
 				<key>bundle-identifier</key>
-				<string>com.ugqing2.app</string>
+				<string>com.test.pushtoken</string>
 				<key>bundle-version</key>
 				<string>1.0</string>
 				<key>kind</key>
 				<string>software</string>
 				<key>title</key>
-				<string>零用宝</string>
+				<string>赚钱</string>
 			</dict>
 		</dict>
 	</array>

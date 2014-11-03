@@ -4,71 +4,75 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
 	<properties
-		resource="net/yuanmomo/tools/db/orm/mybatis/generatorConfig.properties" />
+		resource="com/jifen/manager/bean/mybatis/generator/generatorConfig.properties" />
 	<context id="MBG" targetRuntime="MyBatis3" defaultModelType="conditional">
 		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
 		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
 		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
 		<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
 			<property name="searchString" value="Example$" />
-			<property name="replaceString" value="Criteria" />
+			<property name="replaceString" value="Param" />
 		</plugin>
-
 		<!-- MyBatis generator 自带的是假分页，效率很低 -->
-		<!-- <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" /> -->
 		<plugin type="net.yuanmomo.tools.db.orm.mybatis.generator.plugin.pagination.PaginationPlugin" />
 		<!-- MyBatis generator 别名插件-->
 		<plugin type="net.yuanmomo.tools.db.orm.mybatis.generator.plugin.alias.AliasPlugin" />
 		<!-- Mapper 接口方法声明异常抛出 -->
 		<plugin type="net.yuanmomo.tools.db.orm.mybatis.generator.plugin.MapperExceptionPlugin" >
-			<property name="exceptionClass" value="java.lang.RunTimeException"/>
+			<property name="exceptionClass" value="java.lang.RuntimeException"/>
 		</plugin>
-		
+		<!-- toString 方法的实现插件 -->
 		<plugin type="net.yuanmomo.tools.db.orm.mybatis.generator.plugin.ToStringPlugin" />
-		<!-- MyBatis generator 额外java接口和xmlmaper插件-->
-		<plugin type="net.yuanmomo.tools.db.orm.mybatis.generator.plugin.dao.DAOPlugin" >
-			<property name="typeName" value="DAO"/>
-		</plugin>
 		
+		<!-- MyBatis generator 额外java接口和xmlmaper插件 -->
+<!-- 		<plugin type="net.yuanmomo.tools.db.orm.mybatis.generator.plugin.dao.DAOPlugin" > -->
+<!-- 			<property name="typeName" value="DAO"/> -->
+<!-- 		</plugin> -->
+
 		<commentGenerator>
 			<property name="suppressAllComments" value="true" />
 			<property name="suppressDate" value="true" />
 		</commentGenerator>
+		
 		<jdbcConnection driverClass="${driver}" connectionURL="${url}"
 			userId="${user}" password="${password}">
 		</jdbcConnection>
-
-		<!-- 指定生成的类型为java类型，避免数据库中number等类型字段 -->
-		<javaTypeResolver type="net.yuanmomo.tools.db.orm.mybatis.generator.plugin.typeresolver.JavaTypeResolverCalendarImpl">
-			<property name="forceBigDecimals" value="true" />
-			<property name="DATE" value="CALENDAR" />
-			<property name="TIME" value="CALENDAR" />
-			<property name="TIMESTAMP" value="CALENDAR" />
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
-
-		<!-- 生成model模型，对应的包，存放位置可以指定具体的路径,如/ProjectName/src，也可以使用MAVEN来自动生成 -->
 		<javaModelGenerator targetPackage="${modelPackage}"
 			targetProject="${targetProject}">
 			<property name="enableSubPackages" value="true" />
 		</javaModelGenerator>
-
-		<!--对应的xml mapper文件 -->
 		<sqlMapGenerator targetPackage="${sqlMapPackage}"
 			targetProject="${targetProject}">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
-
-		<!-- 对应的dao接口 -->
 		<javaClientGenerator type="XMLMAPPER"
 			targetPackage="${javaClientPackage}" targetProject="${targetProject}">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
-
 		<table tableName="user" domainObjectName="User" >
-			<generatedKey column="id" sqlStatement="mysql" identity="true" />
+			<generatedKey column="userId" sqlStatement="MySql" identity="true"/>
 		</table>
-<!-- 		<table tableName="department" domainObjectName="Department"> -->
-<!-- 			<generatedKey column="id" sqlStatement="mysql" identity="true" /> -->
+<!-- 		<table tableName="logindetail" domainObjectName="LoginDetail" > -->
+<!-- 			<generatedKey column="id" sqlStatement="MySql" identity="true"/> -->
+<!-- 		</table> -->
+<!-- 		<table tableName="exchangedetail" domainObjectName="ExchangeDetail" > -->
+<!-- 			<generatedKey column="id" sqlStatement="MySql" identity="true"/> -->
+<!-- 		</table> -->
+		
+<!-- 		<table tableName="arealimit" domainObjectName="AreaLimit" > -->
+<!-- 			<generatedKey column="id" sqlStatement="MySql" identity="true"/> -->
+<!-- 		</table> -->
+<!-- 		<table tableName="callbackdetail" domainObjectName="CallbackDetail" > -->
+<!-- 			<generatedKey column="id" sqlStatement="MySql" identity="true"/> -->
+<!-- 		</table> -->
+<!-- 		<table tableName="wallconfig" domainObjectName="WallConfig" > -->
+<!-- 			<generatedKey column="id" sqlStatement="MySql" identity="true"/> -->
+<!-- 		</table> -->
+<!-- 		<table tableName="taskpointdetail" domainObjectName="TaskPointDetail" > -->
+<!-- 			<generatedKey column="id" sqlStatement="MySql" identity="true"/> -->
 <!-- 		</table> -->
 	</context>
 </generatorConfiguration>

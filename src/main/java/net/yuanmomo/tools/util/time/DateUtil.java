@@ -188,6 +188,9 @@ public class DateUtil {
 	 * @since JDK 1.6
 	 */
 	public static Date addDays(Date date, int days){
+		if(date == null){
+			date = new Date();
+		}
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
 		c.add(Calendar.DAY_OF_YEAR, days);
@@ -202,9 +205,43 @@ public class DateUtil {
 	 * @since JDK 1.6
 	 */
 	public static Date addDays(int days){
-		return addDays(new Date(),days);
+		return addDays(null,days);
 	}
 	
+	public static long MILLISECOND_PER_SECOND = 1000;
+	public static long MILLISECOND_PER_MINUTE = 60 * 1000;
+	public static long MILLISECOND_PER_HOUR = 60 * 60 * 1000;
+	public static long MILLISECOND_PER_DAY = 24 * 60 * 1000;
+	
+	public static Date addHours(int hours){
+		return addHours(null,hours);
+	}
+	public static Date addHours(Date date, int hours){
+		if(date == null){
+			date = new Date();
+		}
+		return  new Date(date.getTime() + hours * MILLISECOND_PER_HOUR);
+	}
+	
+	public static Date addMinute(int hours){
+		return addMinute(null,hours);
+	}
+	public static Date addMinute(Date date, int minute){
+		if(date == null){
+			date = new Date();
+		}
+		return  new Date(date.getTime() + minute * MILLISECOND_PER_MINUTE);
+	}
+	
+	public static Date addSecond(int hours){
+		return addSecond(null,hours);
+	}
+	public static Date addSecond(Date date, int seconds){
+		if(date == null){
+			date = new Date();
+		}
+		return  new Date(date.getTime() + seconds * MILLISECOND_PER_SECOND);
+	}
 	
 	/**
 	 * getCalendar: 返回当前date对象对应的calendar对象. <br/>

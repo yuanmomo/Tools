@@ -166,6 +166,14 @@ public class DateUtil {
 		return c.getTime();
 	}
 	
+	public static int getHour(){
+		return getHour(new Date());
+	}
+	public static int getHour(Date date){
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		return c.get(Calendar.HOUR_OF_DAY);
+	}
 	/**
 	 * getDate: 得到当前指定日期的年月日. <br/>
 	 *
@@ -206,6 +214,19 @@ public class DateUtil {
 	 */
 	public static Date addDays(int days){
 		return addDays(null,days);
+	}
+	
+	public static Date addYears(int years){
+		return addYears(null,years);
+	}
+	public static Date addYears(Date date, int years){
+		if(date == null){
+			date = new Date();
+		}
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		c.add(Calendar.YEAR, years);
+		return c.getTime();
 	}
 	
 	public static long MILLISECOND_PER_SECOND = 1000;
@@ -343,6 +364,21 @@ public class DateUtil {
 		return getRestMicrosecondsOfDay(new Date());
 	}
 	
+	public static boolean isBefore(Date first, Date second){
+		if(first == null){
+			return false;
+		}
+		if(second == null){
+			second = new Date();
+		}
+		if(first.getTime() < second.getTime()){
+			return true;
+		}
+		return false;
+	}
+	public static boolean isAfter(Date first, Date second){
+		return !isBefore(first,second);
+	}
 	public static boolean isBetween(Date time, Date start, Date end){
 		if(time == null){
 			return true;
@@ -359,7 +395,26 @@ public class DateUtil {
 		}
 		return false;
 	}
+	
 	public static boolean isBetween(Date start, Date end){
 		return isBetween(new Date(),start, end);
 	}
+	
+	
+	public static boolean hourEqual(Date date1,Date date2){
+		if(date1 == null || date2 == null){
+			return false;
+		}
+		Calendar cal1 = Calendar.getInstance();
+		cal1.setTime(date1);
+		
+		Calendar cal2 = Calendar.getInstance();
+		cal1.setTime(date2);
+		
+		if(cal1.get(Calendar.HOUR_OF_DAY) == cal2.get(Calendar.HOUR_OF_DAY)){
+			return true;
+		}
+		return false;
+	}
+	
 }

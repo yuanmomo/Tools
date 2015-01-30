@@ -17,6 +17,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import net.yuanmomo.tools.util.string.StringUtil;
 
@@ -32,7 +37,7 @@ import net.yuanmomo.tools.util.string.StringUtil;
  * @see 	 
  */
 public class FileUtil {
-	
+	private static Logger logger = LoggerFactory.getLogger(FileUtil.class);
 	/**
 	 *	判断指定的文件是否存在<br/>
 	 *
@@ -170,5 +175,41 @@ public class FileUtil {
 	 */
 	public static void copyFolder(String src, String dest) throws IOException {
 		copyFolder(new File(src),new File(dest));
+	}
+	
+	
+	/**
+	 * @param directory
+	 * @return
+	 */
+	public static List<File> traverseFolder(String directory) {
+		// 返回结果
+		List<File> fileList = new ArrayList<File>();
+		
+		// 判断是否是目录
+		File rootDirec = new File(directory);
+		if (!rootDirec.exists()) {
+			logger.info(directory +" doesn't exists. return.... ");
+			return fileList;
+		}
+		if(! rootDirec.isDirectory()){
+			logger.info("' " + directory + " ' is not a directory. return.... ");
+			return fileList;
+		}
+		// 遍历目录
+		File[] files = rootDirec.listFiles();
+		if (files.length == 0) {
+			logger.info("' " + directory + " ' is empty. return.... ");
+			return fileList;
+		} else {
+			for (File file2 : files) {
+				if (!file2.isDirectory()) {
+					fileList.add(file2);
+				} else {
+					traverseFolder(file2.getAbsolutePath());
+				}
+			}
+		}
+		return fileList;
 	}
 }

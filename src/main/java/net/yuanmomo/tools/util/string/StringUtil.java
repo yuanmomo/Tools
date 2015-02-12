@@ -165,4 +165,33 @@ public class StringUtil {
 		}
 		return result.toString();
 	}
+	/**
+	 * 	按照制定长度拆分字符串
+	 * 
+	 * @param str		要拆分的字符串
+	 * @param length	拆分的长度
+	 */
+	public static String[] split(String str, int length){
+		if(isBlank(str)){
+			return new String[]{};
+		}
+		if(length <= 0){
+			throw new RuntimeException("length should be positive. current is " + length);
+		}
+		if(str.length() <= length){
+			return new String[]{str};
+		}
+		int size = (str.length() % length == 0 )? (str.length() / length) : (str.length() / length) + 1;
+		String[] result = new String[size];
+		for(int i = 0; i < size ; i++){
+			String temp = null;
+			if(i == (size - 1)){ // 最后一段截取
+				temp = str.substring(i*length);
+			}else{
+				temp = str.substring(i*length,(i+1)*length);
+			}
+			result[i] = temp;
+		}
+		return result;
+	}
 }

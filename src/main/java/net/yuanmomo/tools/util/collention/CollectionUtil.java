@@ -265,6 +265,16 @@ public class CollectionUtil {
 		}
 	}
 	
+	public static void print(Object[]  array){
+		if(isNotNull(array)){
+			System.out.println("********************************************");
+			for(Object item : array){
+				System.out.print(item + "\t");
+			}
+		}
+		System.out.println();
+	}
+			
 	/**
 	 *  将map的key转换为一个list返回. <br/>
 	 *

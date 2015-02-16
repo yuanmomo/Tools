@@ -29,18 +29,10 @@ import org.junit.Test;
 public class MD5Test {
 	@Test
 	public void test() throws Exception{
-//		System.out.println(MD5.getMD5(StringUtil.getRandomString(10)));
-//		System.out.println(MD5.getMD5(StringUtil.getRandomString(10)));
-//		System.out.println(MD5.getMD5(StringUtil.getRandomString(10)));
-//		System.out.println(MD5.getMD5(StringUtil.getRandomString(10)));
-//		System.out.println(MD5.getMD5(StringUtil.getRandomString(10)));
-		
-		
-		String a = "a";
-		String b = "b" + a;
-		String c = "c" + b;
-		
-		String d = a + c;
-		System.out.println(d);
+		System.out.println(MD5.getMD5(StringUtil.getRandomString(10)));
+		System.out.println(MD5.getMD5(StringUtil.getRandomString(10)));
+		System.out.println(MD5.getMD5(StringUtil.getRandomString(10)));
+		System.out.println(MD5.getMD5(StringUtil.getRandomString(10)));
+		System.out.println(MD5.getMD5(StringUtil.getRandomString(10)));
 	}
 }

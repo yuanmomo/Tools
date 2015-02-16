@@ -11,7 +11,6 @@
 
 package net.yuanmomo.tools.excel.poi;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -57,6 +56,7 @@ public class ExcelGenerator<T> {
 	 */
 	private IExcelBody<T> bodyCreater;
 	
+	@SuppressWarnings("unused")
 	public void generate() throws IOException{
 		XSSFWorkbook wb = new XSSFWorkbook();
         XSSFSheet sheet = wb.createSheet();

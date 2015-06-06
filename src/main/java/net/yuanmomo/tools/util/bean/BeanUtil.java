@@ -8,15 +8,6 @@
  * Blog         : yuanmomo.net
  * Company      : 成都逗溜网科技有限公司  
  */
-/**
- * Project Name : Tools
- * File Name    : BeanUtil.java
- * Package Name : net.yuanmomo.tools.util.bean
- * Created on   : 2014-4-4上午1:11:32
- * Author       : Hongbin Yuan
- * Blog         : yuanmomo.net
- * Company      : 成都逗溜网科技有限公司  
- */
 
 package net.yuanmomo.tools.util.bean;
 

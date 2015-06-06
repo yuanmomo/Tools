@@ -20,10 +20,10 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.yuanmomo.tools.util.string.StringUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import net.yuanmomo.tools.util.string.StringUtil;
 
 /**
  * ClassName : FileUtil 
@@ -113,7 +113,11 @@ public class FileUtil {
 		if(StringUtil.isBlank(fileFullName)){
 			return "";
 		}
-		return fileFullName.substring(fileFullName.lastIndexOf('.')+1);
+		int index = fileFullName.lastIndexOf('.');
+		if(index == -1){
+			return fileFullName;
+		}
+		return fileFullName.substring(index + 1);
 	}
 	
 	/**
@@ -211,5 +215,29 @@ public class FileUtil {
 			}
 		}
 		return fileList;
+	}
+	
+	
+	public static boolean filterType(String fileName, List<String> supportType) {
+		String extend = FileUtil.getExtend(fileName);
+		
+		for (String temp : supportType) {
+			if (temp.equalsIgnoreCase(extend)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static void mkdirs(String parent){
+		File parentDirectory = new File(parent);
+		if(!parentDirectory.exists()){
+			parentDirectory.mkdirs();
+		}
+	}
+	public static void mkdirs(File parent){
+		if(!parent.exists()){
+			parent.mkdirs();
+		}
 	}
 }

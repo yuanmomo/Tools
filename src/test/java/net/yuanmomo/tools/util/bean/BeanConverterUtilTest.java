@@ -38,28 +38,32 @@ public class BeanConverterUtilTest {
 		System.out.println(generator.generate(A.class, ADTO.class, "to", "dtoTo"));
 
 	}
-
-
-
+	@Test
+	public void testBeanCreateUtil(){
+		try {
+			System.out.println(BeanCreateUtil.generate(A.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
 
 @Data
 @NoArgsConstructor
 class A{
-	public int a;
-	public byte b;
-	public char c;
-	public short d;
-	public int e;
-	public long f;
-	public float g;
-	public double h;
+	private int a;
+	private byte b;
+	private char c;
+	private short d;
+	private int e;
+	private long f;
+	private float g;
+	private double h;
 
-	public String i;
-	public Object j;
+	private String i;
+	private Object j;
 
-	public Integer aExtra;
-
+	private Integer aExtra;
 }
 
 

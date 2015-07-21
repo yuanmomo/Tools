@@ -100,7 +100,7 @@ public class BeanDTOConverterUtil {
 		String oldObjectName = StringUtil.lowerFirstChar(sourceClassName);
 		String newObjectName = " new"+targetClassName;
 
-		sb.append("\tpublic  " ).append(targetPackageClassName).append(" ").append(methodName).append(targetClassName)
+		sb.append("\tpublic static " ).append(targetPackageClassName).append(" ").append(methodName).append(targetClassName)
 			.append("("+sourcePackageClassName).append(" ").append(oldObjectName).append("){\n");
 		sb.append("\t\tif(").append(oldObjectName).append(" == null){\n").append("\t\t\treturn null;\n").append("\t\t}\n\t\t");
 		sb.append(targetPackageClassName).append(newObjectName).append(" = new ")

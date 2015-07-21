@@ -90,12 +90,18 @@ public class BeanDTOConverterUtil {
 		StringBuilder sb = new StringBuilder();
 
 		// 取得当前源类包名和类名
-		String sourcePackageClassName = source.getName();
+		String sourcePackageClassName = source.getSimpleName();
 		String sourceClassName = source.getSimpleName();
 		// 取得当前目标类包名和类名
-		String targetPackageClassName = target.getName();
+		String targetPackageClassName = target.getSimpleName();
 		String targetClassName = target.getSimpleName();
 
+		// 判断源类名和目标类名是否相同，如果相同，则要加包名
+		if(sourcePackageClassName.equals(targetPackageClassName)){
+			sourcePackageClassName = source.getName();
+			targetPackageClassName = target.getName();
+		}
+		
 		// 生成的方法内的变量名
 		String oldObjectName = StringUtil.lowerFirstChar(sourceClassName);
 		String newObjectName = " new"+targetClassName;

@@ -104,7 +104,7 @@ public class BeanDTOConverterUtil {
 		
 		// 生成的方法内的变量名
 		String oldObjectName = StringUtil.lowerFirstChar(sourceClassName);
-		String newObjectName = " new"+targetClassName;
+		String newObjectName = "new"+targetClassName;
 
 		sb.append("\tpublic static " ).append(targetPackageClassName).append(" ").append(methodName).append(targetClassName)
 			.append("("+sourcePackageClassName).append(" ").append(oldObjectName).append("){\n");
